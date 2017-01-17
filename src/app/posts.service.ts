@@ -14,19 +14,19 @@ export class PostsService {
   }
 
   saveData(postData) {
-        var body = `name=${postData.name}&id=${postData.id}`;
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    var body = postData;
 
-        this.http
-          .post('/api/posts',
-            body, {
-              headers: headers
-            })
-            .subscribe(data => {
-                  alert('ok');
-            }, error => {
-                console.log(JSON.stringify(error.json()));
-            });
+    this.http
+      .post('/api/posts',
+        body, {
+          headers: headers
+        })
+        .subscribe(data => {
+          alert('ok');
+        }, error => {
+          console.log(JSON.stringify(error.json()));
+    });
   }
 }

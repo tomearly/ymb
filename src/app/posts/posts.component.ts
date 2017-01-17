@@ -15,14 +15,12 @@ export class PostsComponent implements OnInit {
 
   public postsForm = this.fb.group({
     name: ["", Validators.required],
-    id: ["", Validators.required]
+    id: ["", Validators.required],
+    price: ["", Validators.required]
   });
 
   saveData(event) {
-    console.log(event);
-    console.log(this);
-    console.log(JSON.stringify(this.postsForm.controls));
-    this.postsService.saveData({ 'id': '123',  'name': 'abcdef'});
+    this.postsService.saveData(JSON.stringify(this.postsForm.controls));
   }
 
   ngOnInit() {

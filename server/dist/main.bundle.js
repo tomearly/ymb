@@ -42804,9 +42804,11 @@ var PostsService = (function () {
             .map(function (res) { return res.json(); });
     };
     PostsService.prototype.saveData = function (postData) {
-        var body = "name=" + postData.name + "&id=" + postData.id;
+        //    var body = `name=${postData.name}&id=${postData.id}`;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        //  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        headers.append('Content-Type', 'application/json');
+        var body = postData;
         this.http
             .post('/api/posts', body, {
             headers: headers
@@ -57394,14 +57396,12 @@ var PostsComponent = (function () {
         this.posts = [];
         this.postsForm = this.fb.group({
             name: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required],
-            id: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required]
+            id: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required],
+            price: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required]
         });
     }
     PostsComponent.prototype.saveData = function (event) {
-        console.log(event);
-        console.log(this);
-        console.log(JSON.stringify(this.postsForm.controls));
-        this.postsService.saveData({ 'id': '123', 'name': 'abcdef' });
+        this.postsService.saveData(JSON.stringify(this.postsForm.controls));
     };
     PostsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -60513,7 +60513,7 @@ module.exports = "<router-outlet></router-outlet>\n"
 /* 637 */
 /***/ function(module, exports) {
 
-module.exports = "<form [formGroup]=\"postsForm\" action=\"http://127.0.0.1:3000/api/posts\" method=\"POST\" (ngSubmit)=\"saveData($event)\">\n  <input [(ngModel)]=\"name\" formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n  <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br><br>\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n</form>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n\n      <h4 class=\"card-title\">ID: {{ post.id }}</h4>\n      <p class=\"card-text\">{{post._id}}</p>\n      <p class=\"card-text\">Treatment - {{post.name}}</p>\n      <a href=\"#\" class=\"card-link\">Card link</a>\n      <a href=\"#\" class=\"card-link\">Another link</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<form [formGroup]=\"postsForm\" action=\"http://127.0.0.1:3000/api/posts\" method=\"POST\" (ngSubmit)=\"saveData($event)\">\n  <label for=\"name\">Treatment</label>\n  <input [(ngModel)]=\"name\" formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n  <label form=\"id\">ID</label>\n  <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br><br>\n  <label form=\"price\">Price</label>\n  <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\">\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n</form>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n\n      <h4 class=\"card-title\">ID: {{ post.id }}</h4>\n      <p class=\"card-text\">{{post._id}}</p>\n      <p class=\"card-text\">Treatment - {{post.name}}</p>\n      <a href=\"#\" class=\"card-link\">Card link</a>\n      <a href=\"#\" class=\"card-link\">Another link</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 638 */
