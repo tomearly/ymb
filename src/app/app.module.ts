@@ -1,20 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { PlatformLocation } from '@angular/common';
 import { AppComponent } from './app.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './posts.service';
+// We need to import the ReactiveFormsModule and import it
+import { ReactiveFormsModule } from '@angular/forms';
+
+// Define the routes
+const ROUTES = [
+  {
+    path: '',
+    redirectTo: 'posts',
+    pathMatch: 'full'
+  },
+  {
+    path: 'posts',
+    component: PostsComponent
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [],
+  providers: [PostsService], // Add the posts service
   bootstrap: [AppComponent]
 })
 export class AppModule { }
