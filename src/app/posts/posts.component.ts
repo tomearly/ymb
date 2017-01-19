@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../posts.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -11,16 +11,27 @@ export class PostsComponent implements OnInit {
 
   posts: any = [];
 
-  constructor(private postsService: PostsService, public fb: FormBuilder) { }
-
   public postsForm = this.fb.group({
-    name: ["", Validators.required],
-    id: ["", Validators.required],
-    price: ["", Validators.required]
+    name: ['', Validators.required],
+    id: ['', Validators.required],
+    price: ['', Validators.required],
+    _id: [ '', Validators.required]
   });
+
+  constructor(private postsService: PostsService, public fb: FormBuilder) { }
 
   saveData(event) {
     this.postsService.saveData(JSON.stringify(this.postsForm.controls));
+  }
+
+  editData(event) {
+    console.log(event);
+    this.postsService.editData(JSON.stringify(event));
+  }
+
+  deleteData(event) {
+    console.log(event);
+    this.postsService.deleteData(JSON.stringify(event));
   }
 
   ngOnInit() {

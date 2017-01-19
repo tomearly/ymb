@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { PlatformLocation } from '@angular/common';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostsService } from './posts.service';
@@ -14,11 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'posts',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
-    path: 'posts',
+    path: 'admin/posts',
     component: PostsComponent
   }
 ];

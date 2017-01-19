@@ -39712,6 +39712,7 @@ var isPromise = __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* __core_privat
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["d"]; });
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -42778,9 +42779,9 @@ var AppComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(642);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(294);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostsService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -42803,10 +42804,23 @@ var PostsService = (function () {
         return this.http.get('/api/posts')
             .map(function (res) { return res.json(); });
     };
+    PostsService.prototype.editData = function (postData) {
+        console.log(postData);
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
+        var body = postData;
+        this.http
+            .put('/api/posts', body, {
+            headers: headers
+        })
+            .subscribe(function (data) {
+            alert('ok');
+        }, function (error) {
+            console.log(JSON.stringify(error.json()));
+        });
+    };
     PostsService.prototype.saveData = function (postData) {
-        //    var body = `name=${postData.name}&id=${postData.id}`;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
-        //  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var body = postData;
         this.http
@@ -42819,9 +42833,28 @@ var PostsService = (function () {
             console.log(JSON.stringify(error.json()));
         });
     };
+    PostsService.prototype.deleteData = function (postData) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
+        var body = postData;
+        /*  this.http
+            .delete('/api/posts',
+              body, {
+                headers: headers
+              })
+              .subscribe(data => {
+                alert('ok');
+              }, error => {
+                console.log(JSON.stringify(error.json()));
+          });*/
+        this.http.delete('/api/posts', new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* RequestOptions */]({
+            body: body,
+            headers: headers
+        }));
+    };
     PostsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
     ], PostsService);
     return PostsService;
     var _a;
@@ -54558,7 +54591,7 @@ var JsonpModule = (function () {
 /* unused harmony reexport XHRBackend */
 /* unused harmony reexport XHRConnection */
 /* unused harmony reexport BaseRequestOptions */
-/* unused harmony reexport RequestOptions */
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__base_request_options__["a"]; });
 /* unused harmony reexport BaseResponseOptions */
 /* unused harmony reexport ResponseOptions */
 /* unused harmony reexport ReadyState */
@@ -54566,9 +54599,9 @@ var JsonpModule = (function () {
 /* unused harmony reexport ResponseContentType */
 /* unused harmony reexport ResponseType */
 /* harmony reexport (binding) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_6__headers__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
 /* unused harmony reexport Jsonp */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["a"]; });
 /* unused harmony reexport JsonpModule */
 /* unused harmony reexport Connection */
 /* unused harmony reexport ConnectionBackend */
@@ -57342,7 +57375,7 @@ var AppModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["b" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_http__["d" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(ROUTES) // Add routes to the app
             ],
@@ -57374,8 +57407,8 @@ var AppModule = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__posts_service__ = __webpack_require__(318);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts_service__ = __webpack_require__(318);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -57395,13 +57428,22 @@ var PostsComponent = (function () {
         this.fb = fb;
         this.posts = [];
         this.postsForm = this.fb.group({
-            name: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required],
-            id: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required],
-            price: ["", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* Validators */].required]
+            name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            price: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            _id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     }
     PostsComponent.prototype.saveData = function (event) {
         this.postsService.saveData(JSON.stringify(this.postsForm.controls));
+    };
+    PostsComponent.prototype.editData = function (event) {
+        console.log(event);
+        this.postsService.editData(JSON.stringify(event));
+    };
+    PostsComponent.prototype.deleteData = function (event) {
+        console.log(event);
+        this.postsService.deleteData(JSON.stringify(event));
     };
     PostsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -57416,7 +57458,7 @@ var PostsComponent = (function () {
             template: __webpack_require__(637),
             styles: [__webpack_require__(635)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__posts_service__["a" /* PostsService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__posts_service__["a" /* PostsService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === 'function' && _b) || Object])
     ], PostsComponent);
     return PostsComponent;
     var _a, _b;
@@ -60513,7 +60555,7 @@ module.exports = "<router-outlet></router-outlet>\n"
 /* 637 */
 /***/ function(module, exports) {
 
-module.exports = "<form [formGroup]=\"postsForm\" action=\"http://127.0.0.1:3000/api/posts\" method=\"POST\" (ngSubmit)=\"saveData($event)\">\n  <label for=\"name\">Treatment</label>\n  <input [(ngModel)]=\"name\" formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n  <label form=\"id\">ID</label>\n  <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br><br>\n  <label form=\"price\">Price</label>\n  <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\">\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n</form>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n\n      <h4 class=\"card-title\">ID: {{ post.id }}</h4>\n      <p class=\"card-text\">{{post._id}}</p>\n      <p class=\"card-text\">Treatment - {{post.name}}</p>\n      <a href=\"#\" class=\"card-link\">Card link</a>\n      <a href=\"#\" class=\"card-link\">Another link</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<form [formGroup]=\"postsForm\" action=\"http://127.0.0.1:3000/api/posts\" method=\"POST\" (ngSubmit)=\"saveData($event)\">\n  <label for=\"name\">Treatment</label>\n  <input [(ngModel)]=\"name\" formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n  <label form=\"id\">ID</label>\n  <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br>\n  <label form=\"price\">Price</label>\n  <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\">\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n</form>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n      <h4 class=\"card-title\">ID: {{ post.id }}</h4>\n      Treatment: <input type=\"text\" [(ngModel)]=\"post.name\" value=\"{{post.name}}\">\n      Treatment ID:<input type=\"text\" [(ngModel)]=\"post.id\" value=\"{{post.id}}\">\n      <a href=\"#\" (click)=\"editData(post)\" class=\"card-link\">Save</a>\n      <a href=\"#\" (click)=\"deleteData(post)\" class=\"card-link\">Remove</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 638 */
