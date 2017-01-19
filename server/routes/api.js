@@ -16,7 +16,7 @@ mongoose.connect(mongodbURL);
 
 var db;
 
-var Treatment = mongoose.model('Treatment', {name: String, id: Number });
+var Treatment = mongoose.model('Treatment', {name: String, id: Number, price: Number });
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -24,8 +24,8 @@ router.get('/', (req, res) => {
 });
 
 // Get all posts
-router.get('/posts', (req, res) => {
-  Treatment.find({}, function(err, docs) {
+router.get('/treatments', (req, res) => {
+  Treatment.find({}, null, {sort: {_id: -1}}, function(err, docs) {
     if (!err){
         res.send(docs);
       //  process.exit();
@@ -33,16 +33,28 @@ router.get('/posts', (req, res) => {
   });
 });
 
-router.post('/posts', (req, res) => {
+router.post('/treatments', (req, res) => {
   req.body.id = parseInt(req.body.id);
   var content = new Treatment(req.body);
   content.save(function(err){
     if(err){
-      return handleError(err);
+      res.redirect('/admin/treatments');
     } else {
-      res.redirect('/');
+      res.redirect('/admin/treatments');
     }
   })
+});
+
+router.put('/treatments', (req, res) => {
+  var content = new Treatment(req.body);
+  content.isNew = false;
+  content.save(function(err){
+    if(err){
+      res.redirect('/admin/treatments');
+    } else {
+      res.redirect('/admin/treatments');
+    }
+  });
 });
 
 module.exports = router;
