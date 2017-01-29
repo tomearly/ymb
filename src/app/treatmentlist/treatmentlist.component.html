@@ -1,0 +1,11 @@
+<body>
+<div class="treatments-container">
+  <h1>Treatments</h1>
+    <ul class="list-group" *ngFor="let treatment of treatments">
+      <li class="list-group-item justify-content-between">
+        {{treatment.name}}
+          <span class="badge badge-default badge-pill price-pill-color">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span>
+      </li>
+    </ul>
+</div>
+</body>

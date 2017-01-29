@@ -1,0 +1,25 @@
+body {
+  background: #fff !important;
+  height: calc(100vh);
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.list-group-item {
+  border: 0px !important;
+  padding: 7px 1px 0px 1px !important;
+  font-size: .9rem;
+}
+
+.price-pill-color {
+  background: #59b9b5;
+}
+
+.treatments-container {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 0 40px 0 40px;
+}
