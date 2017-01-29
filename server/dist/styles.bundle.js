@@ -1,15 +1,15 @@
 webpackJsonp([1,2],{
 
-/***/ 371:
+/***/ 374:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(631);
+var content = __webpack_require__(637);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(656)(content, {});
+var update = __webpack_require__(667)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -27,22 +27,22 @@ if(false) {
 
 /***/ },
 
-/***/ 631:
+/***/ 637:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(632)();
+exports = module.exports = __webpack_require__(638)();
 // imports
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff;\n}\n\ndiv {\n  overflow-x: auto;\n  overflow-y: scroll;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 85px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 145px;\n  }\n}\n\n.home-navbar {\n    color: black;\n    z-index: 13000;\n    font-size: .65rem;\n    max-height: 40px;\n    position: fixed;\n    transform: rotate(270deg);\n    -webkit-transform: rotate(270deg);\n    -moz-transform: rotate(270deg);\n    -o-transform: rotate(270deg);\n    -ms-transform: rotate(270deg);\n    top: 54%;\n    right: -20%;\n}\n\n.home-navbar-top {\n  background: #c1c1c1 !important;\n}\n.main-logo {\n  width: 200px;\n  float: left;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n\n.center-div {\n  position:absolute;\n  top:0; bottom:0;\n  left:0; right:0;\n  margin:auto;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n\n//LOADER\n\n@-webkit-keyframes uil-ripple {\n  0% {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    margin: 0 0 0 0;\n  }\n  33% {\n    width: 44%;\n    height: 44%;\n    margin: -22% 0 0 -22%;\n    opacity: 1;\n  }\n  100% {\n    width: 88%;\n    height: 88%;\n    margin: -44% 0 0 -44%;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes uil-ripple {\n  0% {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    margin: 0 0 0 0;\n  }\n  33% {\n    width: 44%;\n    height: 44%;\n    margin: -22% 0 0 -22%;\n    opacity: 1;\n  }\n  100% {\n    width: 88%;\n    height: 88%;\n    margin: -44% 0 0 -44%;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes uil-ripple {\n  0% {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    margin: 0 0 0 0;\n  }\n  33% {\n    width: 44%;\n    height: 44%;\n    margin: -22% 0 0 -22%;\n    opacity: 1;\n  }\n  100% {\n    width: 88%;\n    height: 88%;\n    margin: -44% 0 0 -44%;\n    opacity: 0;\n  }\n}\n@keyframes uil-ripple {\n  0% {\n    width: 0;\n    height: 0;\n    opacity: 0;\n    margin: 0 0 0 0;\n  }\n  33% {\n    width: 44%;\n    height: 44%;\n    margin: -22% 0 0 -22%;\n    opacity: 1;\n  }\n  100% {\n    width: 88%;\n    height: 88%;\n    margin: -44% 0 0 -44%;\n    opacity: 0;\n  }\n}\n.uil-ripple-css {\n  background: none;\n  position: relative;\n  width: 200px;\n  height: 200px;\n}\n.uil-ripple-css div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin: 25% 25% 25% 25%;\n  width: 0;\n  height: 0;\n  opacity: 0;\n  border-radius: 50%;\n  border-width: 12px;\n  border-style: solid;\n  -webkit-animation: uil-ripple 2s ease-out infinite;\n  animation: uil-ripple 2s ease-out infinite;\n}\n.uil-ripple-css div:nth-of-type(1) {\n  border-color: #59B9B5;\n}\n.uil-ripple-css div:nth-of-type(2) {\n  border-color: #C1C1C1;\n  -webkit-animation-delay: 1s;\n  animation-delay: 1s;\n}\n", ""]);
 
 // exports
 
 
 /***/ },
 
-/***/ 632:
+/***/ 638:
 /***/ function(module, exports) {
 
 /*
@@ -99,7 +99,7 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 656:
+/***/ 667:
 /***/ function(module, exports) {
 
 /*
@@ -352,13 +352,13 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 659:
+/***/ 670:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(371);
+module.exports = __webpack_require__(374);
 
 
 /***/ }
 
-},[659]);
+},[670]);
 //# sourceMappingURL=styles.bundle.map

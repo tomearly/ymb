@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-
+const compression = require('compression');
 
 // Get our API routes
 const api = require('./routes/api');
@@ -15,6 +15,8 @@ app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
   next();
 });
+
+app.use(compression());
 
 // Parsers for POST data
 app.use(bodyParser.json());
