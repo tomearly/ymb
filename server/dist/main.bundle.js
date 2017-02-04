@@ -29339,11 +29339,11 @@ var AboutmeService = (function () {
         headers.append('Content-Type', 'application/json');
         var body = inputData;
         this.http
-            .put('/api/aboutme', body, {
+            .post('/api/aboutme', body, {
             headers: headers
         })
             .subscribe(function (data) {
-            alert('ok');
+            alert('About me section edited');
         }, function (error) {
             console.log(JSON.stringify(error.json()));
         });
@@ -29358,7 +29358,7 @@ var AboutmeService = (function () {
             headers: headers
         })
             .subscribe(function (data) {
-            alert('ok');
+            alert('New about me section added');
         }, function (error) {
             console.log(JSON.stringify(error.json()));
         });
@@ -29412,13 +29412,13 @@ var TreatmentsService = (function () {
             headers: headers
         })
             .subscribe(function (data) {
-            alert('ok');
+            alert('Treatment edited');
         }, function (error) {
+            alert('Could not edit treatment');
             console.log(JSON.stringify(error.json()));
         });
     };
     TreatmentsService.prototype.newData = function (inputData) {
-        console.log(inputData);
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var body = inputData;
@@ -29427,8 +29427,9 @@ var TreatmentsService = (function () {
             headers: headers
         })
             .subscribe(function (data) {
-            alert('ok');
+            alert('New treatment added');
         }, function (error) {
+            alert('Could not save new treatment');
             console.log(JSON.stringify(error.json()));
         });
     };
@@ -57441,15 +57442,14 @@ var AboutmeComponent = (function () {
         this.fb = fb;
         this.aboutmelist = [];
         this.aboutmeForm = this.fb.group({
-            description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            _id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
+            description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     }
     AboutmeComponent.prototype.newData = function (event) {
-        this.aboutmeService.newData(stringify(this.aboutmeForm.controls));
+        this.aboutmeService.newData(this.aboutmeForm.value);
     };
     AboutmeComponent.prototype.editData = function (event) {
-        this.aboutmeService.editData(JSON.stringify(event));
+        this.aboutmeService.editData(this.aboutmeForm.value);
     };
     AboutmeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -57690,21 +57690,22 @@ var TreatmentsComponent = (function () {
         this.fb = fb;
         this.treatments = [];
         this.treatmentsForm = this.fb.group({
-            name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            price: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            _id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
+            name: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]],
+            price: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]],
+            id: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]],
+            inactive: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]],
+            gender: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]]
         });
     }
     TreatmentsComponent.prototype.newData = function (event) {
-        this.treatmentsService.newData(stringify(this.treatmentsForm.controls));
+        this.treatmentsService.newData(this.treatmentsForm.value);
     };
     TreatmentsComponent.prototype.editData = function (event) {
-        this.treatmentsService.editData(JSON.stringify(event));
+        this.treatmentsService.editData(this.treatmentsForm.value);
     };
     TreatmentsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // Retrieve Treatment from the API
+        //Retrieve Treatment from the API
         this.treatmentsService.getAllTreatments().subscribe(function (treatmentData) {
             _this.treatments = treatmentData;
         });
@@ -60806,13 +60807,13 @@ module.exports = "body {\n  background: #fff !important;\n}\n"
 /* 642 */
 /***/ function(module, exports) {
 
-module.exports = "body {\n  background: #fff !important;\n}\n\ndiv { background-color: orange; width: 100%; height: calc(100vh); padding: 0; background-size: cover; background: url(\"/assets/images/massage.jpg\")}\n\ndiv {\n  background:\n\turl(\"/assets/images/massage.png\") 50% 50% no-repeat;\n  background-size: cover;\n}\n\n.aboutme-container {\n  color: #000;\n  max-width: 800px;\n  margin: 0px auto;\n  padding: 10px 40px 0 40px;\n}\n"
+module.exports = "body {\n  background: #fff !important;\n}\n\ndiv { background-color: orange; width: 100%; height: calc(100vh); padding: 0; background-size: cover; background: url(\"/assets/images/massage.jpg\")}\n\ndiv {\n  background:\n\turl(\"/assets/images/massage.jpg\") 50% 50% no-repeat;\n  background-size: cover;\n}\n\n.aboutme-container {\n  color: #000;\n  max-width: 800px;\n  margin: 0px auto;\n  padding: 10px 40px 0 40px;\n}\n\nh1 {\n  margin-top: 20px;\n}\n"
 
 /***/ },
 /* 643 */
 /***/ function(module, exports) {
 
-module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh2 {\n    text-align: center;\n    font-size: 1.5rem;\n}\n\n.list-group-item {\n  border: 0px !important;\n  padding: 7px 1px 0px 1px !important;\n  font-size: .9rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n\n.treatments-container {\n  max-width: 800px;\n  margin: 10px auto;\n  padding: 0 40px 0 40px;\n}\n"
+module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.75rem;\n}\n\n.list-group-item {\n  border: 0px !important;\n  padding: 7px 1px 0px 1px !important;\n  font-size: .9rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n"
 
 /***/ },
 /* 644 */
@@ -60824,7 +60825,7 @@ module.exports = "body {\n  background: #fff !important;\n}\n\n.container {\n  m
 /* 645 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new about me paragraph</h4>\n    <form [formGroup]=\"aboutmeForm\" action=\"http://127.0.0.1:3000/api/aboutme\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"name\">About me section</label>\n      <input type=\"text\" [(ngModel)]=\"description\" formControlName=\"description\" name=\"description\" placeholder=\"About me paragraph\"><br>\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let aboutme of aboutmelist\">\n    <div class=\"card card-block\">\n      About me: <input type=\"text\" [(ngModel)]=\"aboutme.description\" value=\"{{aboutme.description}}\">\n      <a href=\"#\" (click)=\"editData(treatment)\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new about me paragraph</h4>\n    <form [formGroup]=\"aboutmeForm\" novalidate action=\"api/aboutme\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"description\">About me section</label>\n      <input type=\"text\" formControlName=\"description\" name=\"description\" placeholder=\"About me paragraph\"><br>\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let aboutme of aboutmelist\">\n    <div class=\"card card-block\">\n      About me: <input type=\"text\" [(ngModel)]=\"aboutme.description\">\n      <a href=\"#\" (click)=\"editData(aboutme)\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 646 */
@@ -60836,19 +60837,19 @@ module.exports = "<router-outlet></router-outlet>\n"
 /* 647 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"heroimage\">\n  <div class=\"aboutme-container\">\n    <h1>About Me</h1>\n        <p *ngFor=\"let aboutme of aboutmeList\">\n          {{aboutme.description}}\n        </p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"heroimage\">\n  <div class=\"col-md-8 offset-md-2\">\n    <h1>About Me</h1>\n        <p *ngFor=\"let aboutme of aboutmeList\">\n          {{aboutme.description}}\n        </p>\n  </div>\n</div>\n"
 
 /***/ },
 /* 648 */
 /***/ function(module, exports) {
 
-module.exports = "<body>\n<div class=\"treatments-container\">\n  <h1>Treatments</h1>\n    <ul class=\"list-group\" *ngFor=\"let treatment of treatments\">\n      <li class=\"list-group-item justify-content-between\">\n        {{treatment.name}}\n          <span class=\"badge badge-default badge-pill price-pill-color\">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span>\n      </li>\n    </ul>\n</div>\n</body>\n"
+module.exports = "<body>\n<div class=\"col-md-8 offset-md-2\">\n  <h1>Treatments</h1>\n    <ul class=\"list-group\" *ngFor=\"let treatment of treatments\">\n      <li *ngIf=\"!treatment.inactive\" class=\"list-group-item justify-content-between\">\n        {{treatment.name}}\n          <span class=\"badge badge-default badge-pill price-pill-color\">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span>\n      </li>\n    </ul>\n</div>\n</body>\n"
 
 /***/ },
 /* 649 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new treatment</h4>\n    <form [formGroup]=\"treatmentsForm\" action=\"http://127.0.0.1:3000/api/treatments\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"name\">Treatment</label>\n      <input [(ngModel)]=\"name\" formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n      <label form=\"id\">ID</label>\n      <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br>\n      <label form=\"price\">Price</label>\n      <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\">\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n</div>\n\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let treatment of treatments\">\n    <div class=\"card card-block\">\n      <h4 class=\"card-title\">ID: {{ treatment.id }}</h4>\n      Treatment: <input type=\"text\" [(ngModel)]=\"treatment.name\" value=\"{{treatment.name}}\"><br>\n      Treatment ID: <input type=\"text\" [(ngModel)]=\"treatment.id\" value=\"{{treatment.id}}\"><br>\n      Price: <input type=\"text\" [(ngModel)]=\"treatment.price\" value=\"{{treatment.price}}\"><br>\n      Inactive: <input type=\"checkbox\"><br>\n      <a href=\"#\" (click)=\"editData(treatment)\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new treatment</h4>\n    <form [formGroup]=\"treatmentsForm\" novalidate action=\"api/treatments\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"name\">Treatment</label>\n      <input formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n      <label form=\"id\">ID</label>\n      <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br>\n      <label form=\"price\">Price £</label>\n      <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\"><br>\n      <label form=\"price\">Gender</label>\n      <select formControlName=\"gender\" name=\"gender\">\n        <option value=\"female\">Female</option>\n        <option value=\"male\">Male</option>\n        <option value=\"both\">Both</option>\n      </select>\n      <br>\n      <label form=\"inactive\">Inactive</label>\n      <input formControlName=\"inactive\" type=\"checkbox\" name=\"inactive\">\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let treatment of treatments\">\n    <div class=\"card card-block\">\n      <h4 class=\"card-title\">ID: {{ treatment.id }}</h4>\n      Treatment: <input type=\"text\" [(ngModel)]=\"treatment.name\"><br>\n      Treatment ID: <input type=\"text\" [(ngModel)]=\"treatment.id\"><br>\n      Price: £ <input type=\"text\" [(ngModel)]=\"treatment.price\"><br>\n      Inactive: <input type=\"checkbox\" [(ngModel)]=\"treatment.inactive\"><br>\n      Gender: <select [(ngModel)]=\"treatment.gender\">\n        <option value=\"female\">Female</option>\n        <option value=\"male\">Male</option>\n        <option value=\"both\">Both</option>\n      </select>\n      <a href=\"#\" (click)=\"editData(treatment)\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 650 */

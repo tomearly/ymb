@@ -14,18 +14,17 @@ export class AboutmeComponent implements OnInit {
     aboutmelist: any = [];
 
     public aboutmeForm = this.fb.group({
-      description: ['', Validators.required],
-      _id: [ '', Validators.required]
+      description: ['', Validators.required]
     });
 
     constructor(private aboutmeService: AboutmeService, public fb: FormBuilder) { }
 
     newData(event) {
-      this.aboutmeService.newData(stringify(this.aboutmeForm.controls));
+      this.aboutmeService.newData(this.aboutmeForm.value);
     }
 
     editData(event) {
-      this.aboutmeService.editData(JSON.stringify(event));
+      this.aboutmeService.editData(this.aboutmeForm.value);
     }
 
     ngOnInit() {

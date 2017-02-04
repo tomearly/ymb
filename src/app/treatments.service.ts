@@ -24,26 +24,26 @@ export class TreatmentsService {
           headers
         })
         .subscribe(data => {
-          alert('ok');
+          alert('Treatment edited');
         }, error => {
+          alert('Could not edit treatment');
           console.log(JSON.stringify(error.json()));
     });
   }
 
   newData(inputData) {
-    console.log(inputData);
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = inputData;
-
     this.http
       .post('/api/treatments',
-        body, {
+          body, {
           headers
         })
         .subscribe(data => {
-          alert('ok');
+          alert('New treatment added');
         }, error => {
+          alert('Could not save new treatment');
           console.log(JSON.stringify(error.json()));
     });
   }

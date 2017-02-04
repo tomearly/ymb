@@ -19,12 +19,12 @@ export class AboutmeService {
     let body = inputData;
 
     this.http
-      .put('/api/aboutme',
+      .post('/api/aboutme',
         body, {
           headers
         })
         .subscribe(data => {
-          alert('ok');
+          alert('About me section edited');
         }, error => {
           console.log(JSON.stringify(error.json()));
     });
@@ -42,7 +42,7 @@ export class AboutmeService {
           headers
         })
         .subscribe(data => {
-          alert('ok');
+          alert('New about me section added');
         }, error => {
           console.log(JSON.stringify(error.json()));
     });

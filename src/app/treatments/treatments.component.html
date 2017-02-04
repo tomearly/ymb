@@ -1,27 +1,40 @@
 <div class="container">
   <div class="card card-block">
     <h4 class="card-title">Add a new treatment</h4>
-    <form [formGroup]="treatmentsForm" action="http://127.0.0.1:3000/api/treatments" method="POST" (ngSubmit)="newData($event)">
+    <form [formGroup]="treatmentsForm" novalidate action="api/treatments" method="POST" (ngSubmit)="newData($event)">
       <label for="name">Treatment</label>
-      <input [(ngModel)]="name" formControlName="name" type="text" name="name" placeholder="Treatment Name"><br>
+      <input formControlName="name" type="text" name="name" placeholder="Treatment Name"><br>
       <label form="id">ID</label>
       <input formControlName="id" type="text" name="id" placeholder="ID"><br>
-      <label form="price">Price</label>
-      <input formControlName="price" type="price" name="price" placeholder="£0.00">
+      <label form="price">Price £</label>
+      <input formControlName="price" type="price" name="price" placeholder="£0.00"><br>
+      <label form="price">Gender</label>
+      <select formControlName="gender" name="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="both">Both</option>
+      </select>
+      <br>
+      <label form="inactive">Inactive</label>
+      <input formControlName="inactive" type="checkbox" name="inactive">
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
-</div>
-
+  </div>
 </div>
 
 <div class="container">
   <div class="row" *ngFor="let treatment of treatments">
     <div class="card card-block">
       <h4 class="card-title">ID: {{ treatment.id }}</h4>
-      Treatment: <input type="text" [(ngModel)]="treatment.name" value="{{treatment.name}}"><br>
-      Treatment ID: <input type="text" [(ngModel)]="treatment.id" value="{{treatment.id}}"><br>
-      Price: <input type="text" [(ngModel)]="treatment.price" value="{{treatment.price}}"><br>
-      Inactive: <input type="checkbox"><br>
+      Treatment: <input type="text" [(ngModel)]="treatment.name"><br>
+      Treatment ID: <input type="text" [(ngModel)]="treatment.id"><br>
+      Price: £ <input type="text" [(ngModel)]="treatment.price"><br>
+      Inactive: <input type="checkbox" [(ngModel)]="treatment.inactive"><br>
+      Gender: <select [(ngModel)]="treatment.gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="both">Both</option>
+      </select>
       <a href="#" (click)="editData(treatment)" class="card-link">Save</a>
     </div>
   </div>

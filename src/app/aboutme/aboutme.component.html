@@ -1,9 +1,9 @@
 <div class="container">
   <div class="card card-block">
     <h4 class="card-title">Add a new about me paragraph</h4>
-    <form [formGroup]="aboutmeForm" action="http://127.0.0.1:3000/api/aboutme" method="POST" (ngSubmit)="newData($event)">
-      <label for="name">About me section</label>
-      <input type="text" [(ngModel)]="description" formControlName="description" name="description" placeholder="About me paragraph"><br>
+    <form [formGroup]="aboutmeForm" novalidate action="api/aboutme" method="POST" (ngSubmit)="newData($event)">
+      <label for="description">About me section</label>
+      <input type="text" formControlName="description" name="description" placeholder="About me paragraph"><br>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
   </div>
@@ -12,8 +12,8 @@
 <div class="container">
   <div class="row" *ngFor="let aboutme of aboutmelist">
     <div class="card card-block">
-      About me: <input type="text" [(ngModel)]="aboutme.description" value="{{aboutme.description}}">
-      <a href="#" (click)="editData(treatment)" class="card-link">Save</a>
+      About me: <input type="text" [(ngModel)]="aboutme.description">
+      <a href="#" (click)="editData(aboutme)" class="card-link">Save</a>
     </div>
   </div>
 </div>
