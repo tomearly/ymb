@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { PlatformLocation } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TreatmentsComponent } from './treatments/treatments.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +11,8 @@ import { TreatmentsService } from './treatments.service';
 import { AboutmeService } from './aboutme.service';
 import { TreatmentlistComponent } from './treatmentlist/treatmentlist.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
+import { AboutmeListComponent } from './aboutmelist/aboutmelist.component';
+import { ShowcaseComponent } from './showcase/showcase.component';
 // We need to import the ReactiveFormsModule and import it
 
 // Define the routes
@@ -28,11 +29,22 @@ const ROUTES = [
   },
   {
     path: 'treatments',
-    component: TreatmentlistComponent
+    component: TreatmentlistComponent,
+    pathMatch: 'full'
   },
   {
     path: 'admin/aboutme',
     component: AboutmeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'showcase',
+    component: ShowcaseComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'aboutme',
+    component: AboutmeListComponent,
     pathMatch: 'full'
   }
 ];
@@ -43,7 +55,9 @@ const ROUTES = [
     TreatmentsComponent,
     HomeComponent,
     TreatmentlistComponent,
-    AboutmeComponent
+    AboutmeComponent,
+    AboutmeListComponent,
+    ShowcaseComponent
   ],
   imports: [
     BrowserModule,
