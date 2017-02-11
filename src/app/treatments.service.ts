@@ -9,6 +9,7 @@ export class TreatmentsService {
 
   // Get all treatments from the API
   getAllTreatments() {
+    console.log('get');
     return this.http.get('/api/treatments')
       .map(res => res.json());
   }
