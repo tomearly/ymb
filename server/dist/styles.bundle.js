@@ -1,15 +1,15 @@
 webpackJsonp([1,2],{
 
-/***/ 373:
+/***/ 385:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(638);
+var content = __webpack_require__(655);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(672)(content, {});
+var update = __webpack_require__(695)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -27,22 +27,22 @@ if(false) {
 
 /***/ },
 
-/***/ 638:
+/***/ 655:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(639)();
+exports = module.exports = __webpack_require__(656)();
 // imports
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\napp-root {\n  height: calc(100vh);\n  width: calc(100vw);\n}\n\nh1 {\n  font-size: 1.75rem;\n  color: #68B9B5;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\n.home-navbar-top {\n  background: #c1c1c1 !important;\n}\n.main-logo {\n  width: 200px;\n  float: left;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\n.dropdown {\n  z-index: 100000 !importqnt;\n}\n\n.home-navbar-top {\n  background: #c1c1c1 !important;\n}\n.main-logo {\n  width: 200px;\n  float: left;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n\n.center-div {\n  position:absolute;\n  top:0; bottom:0;\n  left:0; right:0;\n  margin:auto;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n", ""]);
 
 // exports
 
 
 /***/ },
 
-/***/ 639:
+/***/ 656:
 /***/ function(module, exports) {
 
 /*
@@ -99,7 +99,7 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 672:
+/***/ 695:
 /***/ function(module, exports) {
 
 /*
@@ -352,13 +352,13 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 675:
+/***/ 699:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(373);
+module.exports = __webpack_require__(385);
 
 
 /***/ }
 
-},[675]);
+},[699]);
 //# sourceMappingURL=styles.bundle.map

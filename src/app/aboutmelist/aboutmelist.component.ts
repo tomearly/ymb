@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AboutmeService } from '../aboutme.service';
-// Require the thing
-const stringify = require('json-stringify-safe');
 
 @Component({
   selector: 'app-aboutmelist',

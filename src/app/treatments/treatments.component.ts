@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { TreatmentsService } from '../treatments.service';
-// Require the thing
-const stringify = require('json-stringify-safe');
 
 @Component({
   selector: 'app-treatments',
@@ -11,7 +9,7 @@ const stringify = require('json-stringify-safe');
 })
 export class TreatmentsComponent implements OnInit {
 
-  treatments : any = [];
+  treatments: any = [];
 
   public treatmentsForm = this.fb.group({
       name: ['', [<any>Validators.required]],
@@ -32,7 +30,7 @@ export class TreatmentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Retrieve Treatment from the API
+    // Retrieve Treatment from the API
     this.treatmentsService.getAllTreatments().subscribe(treatmentData => {
       this.treatments = treatmentData;
     });

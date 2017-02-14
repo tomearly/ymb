@@ -13,6 +13,12 @@ import { TreatmentlistComponent } from './treatmentlist/treatmentlist.component'
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { AboutmeListComponent } from './aboutmelist/aboutmelist.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
+import { PriceListComponent } from './pricelist/pricelist.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { FileUploadModule } from "ng2-file-upload";
+import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular';
+import cloudinaryConfiguration from './config';
+
 // We need to import the ReactiveFormsModule and import it
 
 // Define the routes
@@ -46,6 +52,16 @@ const ROUTES = [
     path: 'aboutme',
     component: AboutmeListComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'pricelist',
+    component: PriceListComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin/photo-upload',
+    component: PhotoUploadComponent,
+    pathMatch: 'full'
   }
 ];
 
@@ -57,16 +73,20 @@ const ROUTES = [
     TreatmentlistComponent,
     AboutmeComponent,
     AboutmeListComponent,
-    ShowcaseComponent
+    ShowcaseComponent,
+    PriceListComponent,
+    PhotoUploadComponent
   ],
   imports: [
+    FileUploadModule,
+    CloudinaryModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [TreatmentsService, AboutmeService], // Add the posts service
+  providers: [TreatmentsService, AboutmeService, provideCloudinary(require('cloudinary-core'), cloudinaryConfiguration as CloudinaryConfiguration)], // Add the posts service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

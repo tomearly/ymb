@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   aboutmeList: any = [];
 
-  constructor(private aboutmeService: AboutmeService ) { }
+  constructor(private aboutmeService: AboutmeService) { }
 
   ngOnInit() {
     this.aboutmeService.getAboutmeInfo().subscribe(aboutmeInfo => {

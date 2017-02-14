@@ -1,0 +1,13 @@
+<div class="col-md-6 offset-md-3">
+  <h1>Price List</h1>
+    <ul class="list-group" *ngFor="let price of prices">
+      <li *ngIf="!price.inactive" class="list-group-item justify-content-between">
+        {{price.name}}<div>
+                          <span *ngIf="price.gender == 'male' || price.gender == 'both'" class="badge badge-default badge-pill treatment-male-pill">Male</span>
+                          <span *ngIf="price.gender == 'both'">&nbsp;<img src="assets/images/ampersand.png">&nbsp;</span>
+                          <span *ngIf="price.gender == 'female' || price.gender == 'both'" class="badge badge-default badge-pill treatment-female-pill">Female</span>
+                      </div>
+        <span class="badge badge-default badge-pill price-pill-color">{{price.price | currency:'GBP':true:'1.2-2'}}</span>
+      </li>
+    </ul>
+</div>

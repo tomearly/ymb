@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { TreatmentsService } from '../treatments.service';
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'magicPipe' })
+export class MagicPipe implements PipeTransform {
+  transform(maleTreatments: any[]) {
+    return maleTreatments.filter(treatment => treatment.gender == 'male');
+  }
+}
+
+@Pipe({
+  name: 'magicImpurePipe',
+  pure: false
+})
+export class MagicImpurePipe extends MagicPipe {}
 
 @Component({
   selector: 'app-treatmentlist',

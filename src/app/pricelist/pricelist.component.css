@@ -1,0 +1,29 @@
+body {
+  background: #fff !important;
+  height: calc(100vh);
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 1.75rem;
+}
+
+.list-group-item {
+  border: 0px !important;
+  padding: 7px 1px 0px 1px !important;
+  font-size: 1.1rem;
+}
+
+.price-pill-color {
+  background: #59b9b5;
+}
+
+.treatment-male-pill {
+  background-color: lightblue;
+  color: white;
+}
+
+.treatment-female-pill {
+  background-color: lightpink;
+  color: white;
+}

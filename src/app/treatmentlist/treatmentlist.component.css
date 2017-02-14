@@ -17,3 +17,38 @@ h1 {
 .price-pill-color {
   background: #59b9b5;
 }
+
+.treatment-header {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.treatment-male {
+  color: blue;
+}
+
+.treatment-female {
+  color: #E75480;
+}
+
+.treatment-male-pill {
+  background-color: lightblue;
+  color: white;
+}
+
+.treatment-female-pill {
+  background-color: lightpink;
+  color: white;
+}
+
+.treatment-description, .treatment-footer {
+  margin-top: 20px;
+}
+
+.treatment-outer {
+    border: 1px solid #c1c1c1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    padding: 0 25px 25px;
+    margin-bottom: 25px;
+}
