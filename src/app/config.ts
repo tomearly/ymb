@@ -1,4 +1,4 @@
 export default {
-    cloud_name: 'ymb',
-    upload_preset: 'mh0oatxl'
+    cloud_name: 'XXX',
+    upload_preset: 'XXXXXXX'
 };
