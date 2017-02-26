@@ -16,6 +16,7 @@ import { ShowcaseComponent } from './showcase/showcase.component';
 import { PriceListComponent } from './pricelist/pricelist.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { FileUploadModule } from "ng2-file-upload";
+import { FilterDataPipe } from './filterdata.pipe';
 import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular';
 import cloudinaryConfiguration from './config';
 
@@ -75,7 +76,8 @@ const ROUTES = [
     AboutmeListComponent,
     ShowcaseComponent,
     PriceListComponent,
-    PhotoUploadComponent
+    PhotoUploadComponent,
+    FilterDataPipe
   ],
   imports: [
     FileUploadModule,

@@ -1,6 +1,7 @@
 'use strict';
 
 // Dependencies
+var mongoose = require('mongoose');
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 

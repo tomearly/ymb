@@ -7,7 +7,7 @@
         <div class="treatment-description">{{treatment.description}}</div>
         <br>
         <span *ngIf="treatment.gender == 'male' || treatment.gender == 'both'" class="badge badge-default badge-pill treatment-male-pill">Male</span>
-        <span *ngIf="treatment.gender == 'both'">&nbsp;<img src="assets/images/ampersand.png">&nbsp;</span>
+        <span *ngIf="treatment.gender == 'both'">&nbsp;&&nbsp;</span>
         <span *ngIf="treatment.gender == 'female' || treatment.gender == 'both'" class="badge badge-default badge-pill treatment-female-pill">Female</span>
 
         <div class="treatment-footer">{{treatment.duration}} minutes for <span class="badge badge-default price-pill-color grad">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span></div>

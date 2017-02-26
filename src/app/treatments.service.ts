@@ -15,13 +15,15 @@ export class TreatmentsService {
   }
 
   editData(inputData) {
+    console.log(inputData);
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = inputData;
+    console.log(body);
 
     this.http
-      .put('/api/treatments',
-        body, {
+      .post('/api/treatments',
+          body, {
           headers
         })
         .subscribe(data => {
