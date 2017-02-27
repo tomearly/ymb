@@ -2,19 +2,10 @@ body {
   background: #fff !important;
 }
 
-div { background-color: orange; width: 100%; height: calc(100vh); padding: 0; background-size: cover; background: url("/assets/images/massage.jpg")}
-
 div {
   background:
 	url("/assets/images/massage.jpg") 50% 50% no-repeat;
   background-size: cover;
-}
-
-.aboutme-container {
-  color: #000;
-  max-width: 800px;
-  margin: 0px auto;
-  padding: 10px 40px 0 40px;
 }
 
 h1 {

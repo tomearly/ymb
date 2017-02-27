@@ -9,20 +9,21 @@ export class TreatmentsService {
 
   // Get all treatments from the API
   getAllTreatments() {
-    console.log('get');
-    return this.http.get('/api/treatments')
+    return this.http.get('/api/treatment')
       .map(res => res.json());
   }
 
   editData(inputData) {
-    console.log(inputData);
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = inputData;
-    console.log(body);
+
+    let _id = body._id;
+    //REMOVE _id FROM BODY
+    delete body._id;
 
     this.http
-      .post('/api/treatments',
+      .put(`/api/treatment/${_id}`,
           body, {
           headers
         })
@@ -34,12 +35,11 @@ export class TreatmentsService {
     });
   }
 
-  newData(inputData) {
+  newData(body) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let body = inputData;
     this.http
-      .post('/api/treatments',
+      .post('/api/treatment',
           body, {
           headers
         })

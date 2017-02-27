@@ -7,7 +7,6 @@ export class AboutmeService {
 
   constructor(private http: Http) { }
 
-  // Get all treatments from the API
   getAboutmeInfo() {
     return this.http.get('/api/aboutme')
       .map(res => res.json());
@@ -17,9 +16,13 @@ export class AboutmeService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = inputData;
+    let _id = body._id;
+
+    //REMOVE _id FROM BODY
+    delete body._id;
 
     this.http
-      .post('/api/aboutme',
+      .put(`/api/aboutme/${_id}`,
         body, {
           headers
         })
@@ -30,11 +33,9 @@ export class AboutmeService {
     });
   }
 
-  newData(inputData) {
-    console.log(inputData);
+  newData(body) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let body = inputData;
 
     this.http
       .post('/api/aboutme',

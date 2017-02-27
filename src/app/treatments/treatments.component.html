@@ -1,24 +1,26 @@
 <div class="container">
   <div class="card card-block">
     <h4 class="card-title">Add a new treatment</h4>
-    <form [formGroup]="treatmentsForm" novalidate action="api/treatments" method="POST" (ngSubmit)="newData($event)">
+    <form [formGroup]="treatmentsForm" novalidate action="api/treatment" (ngSubmit)="newData()">
       <label for="name">Treatment</label>
-      <input formControlName="name" type="text" name="name" placeholder="Treatment Name"><br>
+      <input formControlName="name" type="text" name="name" placeholder="Treatment Name" id="name"><br>
       <label for="id">ID</label>
-      <input formControlName="id" type="text" name="id" placeholder="ID"><br>
+      <input formControlName="id" type="text" name="id" placeholder="ID" id="id"><br>
       <label for="price">Price £</label>
-      <input formControlName="price" type="price" name="price" placeholder="£0.00"><br>
+      <input formControlName="price" type="price" name="price" placeholder="£0.00" id="price"><br>
+      <label for="products">Products used</label>
+      <input formControlName="products" type="products" name="products" placeholder="e.g. leg wax..." id="products"><br>
+      <label for="description">Products used</label>
+      <input formControlName="description" type="description" name="description" placeholder="e.g. luxury leg wax with ..." id="description"><br>
+      <label for="duration">Durations in minutes</label>
+      <input formControlName="duration" type="duration" name="duration" placeholder="e.g. 20 minutes" id="duration"><br>
       <label for="gender">Gender</label>
-      <select formControlName="gender" name="gender">
+      <select formControlName="gender" name="gender" id="gender">
         <option value="female">Female</option>
         <option value="male">Male</option>
-        <option value="both">Both</option><small *ngIf="!treatmentsForm.controls.gender.valid">
-        Required.
-      </small>
+        <option value="both">Both</option>
       </select>
       <br>
-      <label form="inactive">Inactive</label>
-      <input formControlName="inactive" type="checkbox" name="inactive">
       <button type="submit" class="btn btn-default" [disabled]="!treatmentsForm.valid">Submit</button>
     </form>
   </div>
@@ -27,53 +29,44 @@
 <div *ngFor="let treatment of treatments">
   <div class="treatment-outer" *ngIf="treatment._id">
     <div class="treatment-header">{{treatment.name}} -
-     <button (click)="showDialog = !showDialog; selectedTreatment = treatment" class="btn">Edit</button>
+      <button (click)="showDialog = !showDialog; selectedTreatment = treatment" class="btn">Edit</button>
     </div>
   </div>
 </div>
+
+<h4 class="card-title">Edit existing treatments</h4>
 
 <div [(hidden)]="showDialog">
-  <h1>Editing {{selectedTreatment.name}}</h1>
-  <form [formGroup]="treatmentsEditForm" novalidate action="api/treatments" method="POST" (ngSubmit)="editData(treatmentsEditForm)">
-    <label for="name">Treatment</label>
-    <input formControlName="_id" type="text" name="_id" [(ngModel)]="selectedTreatment._id"><br>
-    <input formControlName="name" type="text" name="name" [(ngModel)]="selectedTreatment.name" placeholder="Treatment Name"><br>
-    <label for="id">ID</label>
-    <input formControlName="id" type="text" name="id" placeholder="ID" [(ngModel)]="selectedTreatment.id"><br>
-    <label for="price">Price £</label>
-    <input formControlName="price" type="price" name="price" placeholder="£0.00" [(ngModel)]="selectedTreatment.price"><br>
-    <label for="gender">Gender</label>
-    <select formControlName="gender" name="gender" [(ngModel)]="selectedTreatment.gender">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-      <option value="both">Both</option>
-    </select>
-    <br>
-    <label form="inactive">Inactive</label>
-    <input formControlName="inactive" type="checkbox" name="inactive" [(ngModel)]="selectedTreatment.inactive">
-    <button type="submit" class="btn btn-default" [disabled]="!treatmentsEditForm.valid">Submit</button>
-  </form>
-  <button (click)="showDialog = !showDialog" class="btn">Close</button>
-</div>
 
-<!--
-<div class="container">
-  <div class="row" *ngFor="let treatment of treatments">
+  <div class="container">
     <div class="card card-block">
-      <form [formGroup]="treatmentsEditForm" [id]="treatment.id" novalidate action="api/treatments" method="POST" (ngSubmit)="editData($event)">
-      <h4 class="card-title">ID: {{ treatment.id }}</h4>
-      _ID: <input type="text" readonly [value]="treatment._id" name="_id" formControlName="_id"><br>
-      Treatment: <input type="text" [value]="treatment.name" formControlName="name"><br>
-      Treatment ID: <input type="text" [value]="treatment.id" formControlName="id"><br>
-      Price: £ <input type="text" [value]="treatment.price" formControlName="price"><br>
-      Inactive: <input type="checkbox" [value]="treatment.inactive" formControlName="inactive"><br>
-      Gender: <select formControlName="gender" [value]="treatment.gender">
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="both">Both</option>
-      </select>
-        <button type="submit" class="btn btn-default">Submit</button>
+
+      <h1>Editing {{selectedTreatment.name}}</h1>
+      <form [formGroup]="treatmentsEditForm" novalidate action="api/treatment" (ngSubmit)="editData()">
+        <label for="name">Treatment</label>
+        <input formControlName="_id" type="text" name="_id" [(ngModel)]="selectedTreatment._id"><br>
+        <input formControlName="name" type="text" name="name" [(ngModel)]="selectedTreatment.name"
+               placeholder="Treatment Name"><br>
+        <label for="id">ID</label>
+        <input formControlName="id" type="text" name="id" [(ngModel)]="selectedTreatment.id"><br>
+        <label for="price">Price £</label>
+        <input formControlName="price" type="price" name="price" [(ngModel)]="selectedTreatment.price"><br>
+        <label for="products">Products used</label>
+        <input formControlName="products" type="products" name="products" [(ngModel)]="selectedTreatment.products"><br>
+        <label for="duration">Duration in minutes</label>
+        <input formControlName="duration" type="duration" name="description"
+               [(ngModel)]="selectedTreatment.duration"><br>
+        <label for="description">Description</label>
+        <input formControlName="description" type="description" name="description" [(ngModel)]="selectedTreatment.description"><br>
+        <label for="gender">Gender</label>
+        <select formControlName="gender" name="gender" [(ngModel)]="selectedTreatment.gender">
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="both">Both</option>
+        </select>
+        <button type="submit" class="btn btn-default" [disabled]="!treatmentsEditForm.valid">Submit</button>
       </form>
+      <button (click)="showDialog = !showDialog" class="btn">Close</button>
     </div>
   </div>
-</div>-->
+</div>

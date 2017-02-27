@@ -20,8 +20,10 @@ export class TreatmentsComponent implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required],
       id: ['', Validators.required],
-      inactive: ['', Validators.required],
-      gender: ['', Validators.required]
+      gender: ['', Validators.required],
+      products: [''],
+      description: ['', Validators.required],
+      duration: ['', Validators.required]
     });
 
   public treatmentsEditForm = this.fb.group({
@@ -29,8 +31,10 @@ export class TreatmentsComponent implements OnInit {
     name: ['', Validators.required],
     price: ['', Validators.required],
     id: ['', Validators.required],
-    inactive: ['', Validators.required],
-    gender: ['', Validators.required]
+    gender: ['', Validators.required],
+    products: [''],
+    description: ['', Validators.required],
+    duration: ['', Validators.required]
   });
 
   constructor(private treatmentsService: TreatmentsService, public fb: FormBuilder) { }

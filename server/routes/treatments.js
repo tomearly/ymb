@@ -1,12 +1,9 @@
-'use strict';
-
-// Dependencies
-var mongoose = require('mongoose');
-var restful = require('node-restful');
-var mongoose = restful.mongoose;
+/*'use strict';
+const restful = require('node-restful');
+const mongoose = restful.mongoose;
 
 // Schema
-var treatmentSchema = mongoose.Schema({
+const treatmentSchema = mongoose.Schema({
     id: Number,
     name: String,
     price: String,
@@ -15,4 +12,7 @@ var treatmentSchema = mongoose.Schema({
 });
 
 // Return model
-module.exports = restful.model('Treatments', treatmentSchema);
+const Resource = restful.model('Treatments', treatmentSchema).methods(['get', 'post', 'put', 'delete']);
+
+Resource.register(app, '/resources');
+*/

@@ -19838,7 +19838,6 @@ var AboutmeService = (function () {
     function AboutmeService(http) {
         this.http = http;
     }
-    // Get all treatments from the API
     AboutmeService.prototype.getAboutmeInfo = function () {
         return this.http.get('/api/aboutme')
             .map(function (res) { return res.json(); });
@@ -19847,8 +19846,11 @@ var AboutmeService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var body = inputData;
+        var _id = body._id;
+        //REMOVE _id FROM BODY
+        delete body._id;
         this.http
-            .post('/api/aboutme', body, {
+            .put("/api/aboutme/" + _id, body, {
             headers: headers
         })
             .subscribe(function (data) {
@@ -19857,11 +19859,9 @@ var AboutmeService = (function () {
             console.log(JSON.stringify(error.json()));
         });
     };
-    AboutmeService.prototype.newData = function (inputData) {
-        console.log(inputData);
+    AboutmeService.prototype.newData = function (body) {
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        var body = inputData;
         this.http
             .post('/api/aboutme', body, {
             headers: headers
@@ -19909,18 +19909,18 @@ var TreatmentsService = (function () {
     }
     // Get all treatments from the API
     TreatmentsService.prototype.getAllTreatments = function () {
-        console.log('get');
-        return this.http.get('/api/treatments')
+        return this.http.get('/api/treatment')
             .map(function (res) { return res.json(); });
     };
     TreatmentsService.prototype.editData = function (inputData) {
-        console.log(inputData);
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         var body = inputData;
-        console.log(body);
+        var _id = body._id;
+        //REMOVE _id FROM BODY
+        delete body._id;
         this.http
-            .post('/api/treatments', body, {
+            .put("/api/treatment/" + _id, body, {
             headers: headers
         })
             .subscribe(function (data) {
@@ -19930,12 +19930,11 @@ var TreatmentsService = (function () {
             console.log(JSON.stringify(error.json()));
         });
     };
-    TreatmentsService.prototype.newData = function (inputData) {
+    TreatmentsService.prototype.newData = function (body) {
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        var body = inputData;
         this.http
-            .post('/api/treatments', body, {
+            .post('/api/treatment', body, {
             headers: headers
         })
             .subscribe(function (data) {
@@ -58561,10 +58560,10 @@ var AboutmeComponent = (function () {
             description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     }
-    AboutmeComponent.prototype.newData = function (event) {
+    AboutmeComponent.prototype.newData = function () {
         this.aboutmeService.newData(this.aboutmeForm.value);
     };
-    AboutmeComponent.prototype.editData = function (event) {
+    AboutmeComponent.prototype.editData = function () {
         this.aboutmeService.editData(this.aboutmeForm.value);
     };
     AboutmeComponent.prototype.ngOnInit = function () {
@@ -58617,10 +58616,10 @@ var AboutmeListComponent = (function () {
             description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     }
-    AboutmeListComponent.prototype.newData = function (event) {
+    AboutmeListComponent.prototype.newData = function () {
         this.aboutmeService.newData(this.aboutmeForm.value);
     };
-    AboutmeListComponent.prototype.editData = function (event) {
+    AboutmeListComponent.prototype.editData = function () {
         this.aboutmeService.editData(this.aboutmeForm.value);
     };
     AboutmeListComponent.prototype.ngOnInit = function () {
@@ -58786,8 +58785,8 @@ var AppModule = (function () {
 
 "use strict";
 /* harmony default export */ exports["a"] = {
-    cloud_name: 'ymb',
-    upload_preset: 'mh0oatxl'
+    cloud_name: 'XXX',
+    upload_preset: 'XXXXXXX'
 };
 
 
@@ -59160,23 +59159,26 @@ var TreatmentsComponent = (function () {
             name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
             price: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
             id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            inactive: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            gender: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
+            gender: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            products: [''],
+            description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            duration: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
         this.treatmentsEditForm = this.fb.group({
             _id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
             name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
             price: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
             id: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            inactive: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
-            gender: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
+            gender: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            products: [''],
+            description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required],
+            duration: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].required]
         });
     }
-    TreatmentsComponent.prototype.newData = function (event) {
+    TreatmentsComponent.prototype.newData = function () {
         this.treatmentsService.newData(this.treatmentsForm.value);
     };
-    TreatmentsComponent.prototype.editData = function (event, valid) {
-        console.log(event, valid);
+    TreatmentsComponent.prototype.editData = function () {
         this.treatmentsService.editData(this.treatmentsEditForm.value);
     };
     TreatmentsComponent.prototype.ngOnInit = function () {
@@ -83683,25 +83685,25 @@ module.exports = "body {\n  background: #fff !important;\n}\n"
 /* 665 */
 /***/ function(module, exports) {
 
-module.exports = "body {\n  background: #fff !important;\n}\n\ndiv { background-color: orange; width: 100%; height: calc(100vh); padding: 0; background-size: cover; background: url(\"/assets/images/massage.jpg\")}\n\ndiv {\n  background:\n\turl(\"/assets/images/massage.jpg\") 50% 50% no-repeat;\n  background-size: cover;\n}\n\n.aboutme-container {\n  color: #000;\n  max-width: 800px;\n  margin: 0px auto;\n  padding: 10px 40px 0 40px;\n}\n\nh1 {\n  margin-top: 20px;\n}\n"
+module.exports = "body {\n  background: #fff !important;\n}\n\ndiv {\n  background:\n\turl(\"/assets/images/massage.jpg\") 50% 50% no-repeat;\n  background-size: cover;\n}\n\nh1 {\n  margin-top: 20px;\n}\n"
 
 /***/ },
 /* 666 */
 /***/ function(module, exports) {
 
-module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.75rem;\n}\n\n.list-group-item {\n  border: 0px !important;\n  padding: 7px 1px 0px 1px !important;\n  font-size: 1.1rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n\n.treatment-male-pill {\n  background-color: lightblue;\n  color: white;\n}\n\n.treatment-female-pill {\n  background-color: lightpink;\n  color: white;\n}\n"
+module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.75rem;\n}\n\n.list-group-item {\n  border: 0 !important;\n  padding: 7px 1px 0 1px !important;\n  font-size: 1.1rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n\n.treatment-male-pill {\n  background-color: lightblue;\n  color: white;\n}\n\n.treatment-female-pill {\n  background-color: lightpink;\n  color: white;\n}\n"
 
 /***/ },
 /* 667 */
 /***/ function(module, exports) {
 
-module.exports = ".showcase {\n  width: 80%;\n  margin: 30px auto;\n  font-family: sans-serif;\n}\n\nh3 {\n  text-align: left;\n  font-size: 1.65em;\n  margin: 0 0 30px;\n}\n\ndiv {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n}\n\na {\n  display: inline-block;\n  margin-bottom: 8px;\n  width: calc(50% - 4px);\n  margin-right: 8px;\n  text-decoration: none;\n  color: black;\n}\n\na:nth-of-type(2n) {\n  margin-right: 0;\n}\n\n@media screen and (min-width: 50em) {\n  a {\n    width: calc(25% - 6px);\n  }\n\n  a:nth-of-type(2n) {\n    margin-right: 8px;\n  }\n\n  a:nth-of-type(4n) {\n    margin-right: 0;\n  }\n}\n\na:hover img {\n  -webkit-transform: scale(1.15);\n          transform: scale(1.15);\n}\n\nfigure {\n  margin: 0;\n  overflow: hidden;\n}\n\nfigcaption {\n  margin-top: 15px;\n  font-size: .8rem;\n}\n\nimg {\n  border: none;\n  max-width: 100%;\n  height: auto;\n  display: block;\n  background: #ccc;\n  -webkit-transition: -webkit-transform .2s ease-in-out;\n  transition: -webkit-transform .2s ease-in-out;\n  transition: transform .2s ease-in-out;\n  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;\n}\n\n.p a {\n  display: inline;\n  font-size: 13px;\n  margin: 0;\n  text-decoration: underline;\n  color: blue;\n}\n\n.p {\n  text-align: center;\n  font-size: 13px;\n  padding-top: 100px;\n}\n"
+module.exports = "h3 {\n  text-align: left;\n  font-size: 1.65em;\n  margin: 0 0 30px;\n}\n\ndiv {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n}\n\na {\n  display: inline-block;\n  margin-bottom: 8px;\n  width: calc(50% - 4px);\n  margin-right: 8px;\n  text-decoration: none;\n  color: black;\n}\n\na:nth-of-type(2n) {\n  margin-right: 0;\n}\n\n@media screen and (min-width: 50em) {\n  a {\n    width: calc(25% - 6px);\n  }\n\n  a:nth-of-type(2n) {\n    margin-right: 8px;\n  }\n\n  a:nth-of-type(4n) {\n    margin-right: 0;\n  }\n}\n\na:hover img {\n  -webkit-transform: scale(1.15);\n          transform: scale(1.15);\n}\n\nfigure {\n  margin: 0;\n  overflow: hidden;\n}\n\nfigcaption {\n  margin-top: 15px;\n  font-size: .8rem;\n}\n\nimg {\n  border: none;\n  max-width: 100%;\n  height: auto;\n  display: block;\n  background: #ccc;\n  -webkit-transition: -webkit-transform .2s ease-in-out;\n  transition: -webkit-transform .2s ease-in-out;\n  transition: transform .2s ease-in-out;\n  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;\n}\n\n.p a {\n  display: inline;\n  font-size: 13px;\n  margin: 0;\n  text-decoration: underline;\n  color: blue;\n}\n\n.p {\n  text-align: center;\n  font-size: 13px;\n  padding-top: 100px;\n}\n"
 
 /***/ },
 /* 668 */
 /***/ function(module, exports) {
 
-module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.75rem;\n}\n\n.list-group-item {\n  border: 0px !important;\n  padding: 7px 1px 0px 1px !important;\n  font-size: 1.1rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n\n.treatment-header {\n  font-weight: bold;\n  margin-top: 20px;\n}\n\n.treatment-male {\n  color: blue;\n}\n\n.treatment-female {\n  color: #E75480;\n}\n\n.treatment-male-pill {\n  background-color: lightblue;\n  color: white;\n}\n\n.treatment-female-pill {\n  background-color: lightpink;\n  color: white;\n}\n\n.treatment-description, .treatment-footer {\n  margin-top: 20px;\n}\n\n.treatment-outer {\n    border: 1px solid #c1c1c1;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    text-align: center;\n    padding: 0 25px 25px;\n    margin-bottom: 25px;\n}\n"
+module.exports = "body {\n  background: #fff !important;\n  height: calc(100vh);\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.75rem;\n}\n\n.list-group-item {\n  border: 0 !important;\n  padding: 7px 1px 0 1px !important;\n  font-size: 1.1rem;\n}\n\n.price-pill-color {\n  background: #59b9b5;\n}\n\n.treatment-header {\n  font-weight: bold;\n  margin-top: 20px;\n}\n\n.treatment-male-pill {\n  background-color: lightblue;\n  color: white;\n}\n\n.treatment-female-pill {\n  background-color: lightpink;\n  color: white;\n}\n\n.treatment-description, .treatment-footer {\n  margin-top: 20px;\n}\n\n.treatment-outer {\n    border: 1px solid #c1c1c1;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    text-align: center;\n    padding: 0 25px 25px;\n    margin-bottom: 25px;\n}\n"
 
 /***/ },
 /* 669 */
@@ -83713,7 +83715,7 @@ module.exports = "body {\n  background: #fff !important;\n}\n\n.container {\n  m
 /* 670 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new about me paragraph</h4>\n    <form [formGroup]=\"aboutmeForm\" novalidate action=\"api/aboutme\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"description\">About me section</label>\n      <input type=\"text\" formControlName=\"description\" name=\"description\" placeholder=\"About me paragraph\"><br>\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let aboutme of aboutmelist\">\n    <div class=\"card card-block\">\n      About me: <input type=\"text\" [(ngModel)]=\"aboutme.description\">\n      <a href=\"#\" (click)=\"editData(aboutme)\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new about me paragraph</h4>\n    <form [formGroup]=\"aboutmeForm\" novalidate action=\"api/aboutme\" (ngSubmit)=\"newData()\">\n      <label for=\"description\">About me section</label>\n      <input type=\"text\" formControlName=\"description\" name=\"description\" placeholder=\"About me paragraph\"><br>\n      <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let aboutme of aboutmelist\">\n    <div class=\"card card-block\">\n      About me: <input type=\"text\" [(ngModel)]=\"aboutme.description\">\n      <a href=\"#\" (click)=\"editData()\" class=\"card-link\">Save</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 671 */
@@ -83743,7 +83745,7 @@ module.exports = "<div id=\"direct_upload\" ng2FileDrop [uploader]=\"uploader\" 
 /* 675 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"col-md-6 offset-md-3\">\n  <h1>Price List</h1>\n    <ul class=\"list-group\" *ngFor=\"let price of prices\">\n      <li *ngIf=\"!price.inactive\" class=\"list-group-item justify-content-between\">\n        {{price.name}}\n                   <!--       <span *ngIf=\"price.gender == 'male' || price.gender == 'both'\" class=\"badge badge-default badge-pill treatment-male-pill\">Male</span>\n                          <span *ngIf=\"price.gender == 'both'\">&nbsp;<img src=\"assets/images/ampersand.png\">&nbsp;</span>\n                          <span *ngIf=\"price.gender == 'female' || price.gender == 'both'\" class=\"badge badge-default badge-pill treatment-female-pill\">Female</span>-->\n\n        <span class=\"badge badge-default badge-pill price-pill-color\">{{price.price | currency:'GBP':true:'1.2-2'}}</span>\n      </li>\n    </ul>\n</div>\n"
+module.exports = "<div class=\"col-md-6 offset-md-3\">\n  <h1>Price List</h1>\n    <ul class=\"list-group\" *ngFor=\"let price of prices\">\n      <li class=\"list-group-item justify-content-between\">\n        {{price.name}}\n                   <!--       <span *ngIf=\"price.gender == 'male' || price.gender == 'both'\" class=\"badge badge-default badge-pill treatment-male-pill\">Male</span>\n                          <span *ngIf=\"price.gender == 'both'\">&nbsp;<img src=\"assets/images/ampersand.png\">&nbsp;</span>\n                          <span *ngIf=\"price.gender == 'female' || price.gender == 'both'\" class=\"badge badge-default badge-pill treatment-female-pill\">Female</span>-->\n\n        <span class=\"badge badge-default badge-pill price-pill-color\">{{price.price | currency:'GBP':true:'1.2-2'}}</span>\n      </li>\n    </ul>\n</div>\n"
 
 /***/ },
 /* 676 */
@@ -83755,13 +83757,13 @@ module.exports = "<h3>showcase</h3>\n\n\n<div>\n  <a href=\"https://s3-us-west-2
 /* 677 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"col-md-6 offset-md-3\">\n  <h1>Treatments</h1>\n\n    <div *ngFor=\"let treatment of treatments\">\n      <div class=\"treatment-outer\" *ngIf=\"!treatment.inactive\">\n        <div class=\"treatment-header\">{{treatment.name}} using {{treatment.products}}</div>\n        <div class=\"treatment-description\">{{treatment.description}}</div>\n        <br>\n        <span *ngIf=\"treatment.gender == 'male' || treatment.gender == 'both'\" class=\"badge badge-default badge-pill treatment-male-pill\">Male</span>\n        <span *ngIf=\"treatment.gender == 'both'\">&nbsp;&&nbsp;</span>\n        <span *ngIf=\"treatment.gender == 'female' || treatment.gender == 'both'\" class=\"badge badge-default badge-pill treatment-female-pill\">Female</span>\n\n        <div class=\"treatment-footer\">{{treatment.duration}} minutes for <span class=\"badge badge-default price-pill-color grad\">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span></div>\n      </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"col-md-6 offset-md-3\">\n  <h1>Treatments</h1>\n\n    <div *ngFor=\"let treatment of treatments\">\n      <div class=\"treatment-outer\">\n        <div class=\"treatment-header\">{{treatment.name}} using {{treatment.products}}</div>\n        <div class=\"treatment-description\">{{treatment.description}}</div>\n        <br>\n        <span *ngIf=\"treatment.gender == 'male' || treatment.gender == 'both'\" class=\"badge badge-default badge-pill treatment-male-pill\">Male</span>\n        <span *ngIf=\"treatment.gender == 'both'\">&nbsp;&&nbsp;</span>\n        <span *ngIf=\"treatment.gender == 'female' || treatment.gender == 'both'\" class=\"badge badge-default badge-pill treatment-female-pill\">Female</span>\n        <br>\n        <div class=\"treatment-footer\">{{treatment.duration}} minutes for <span class=\"badge badge-default price-pill-color grad\">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span></div>\n      </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 678 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new treatment</h4>\n    <form [formGroup]=\"treatmentsForm\" novalidate action=\"api/treatments\" method=\"POST\" (ngSubmit)=\"newData($event)\">\n      <label for=\"name\">Treatment</label>\n      <input formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\"><br>\n      <label for=\"id\">ID</label>\n      <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\"><br>\n      <label for=\"price\">Price £</label>\n      <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\"><br>\n      <label for=\"gender\">Gender</label>\n      <select formControlName=\"gender\" name=\"gender\">\n        <option value=\"female\">Female</option>\n        <option value=\"male\">Male</option>\n        <option value=\"both\">Both</option><small *ngIf=\"!treatmentsForm.controls.gender.valid\">\n        Required.\n      </small>\n      </select>\n      <br>\n      <label form=\"inactive\">Inactive</label>\n      <input formControlName=\"inactive\" type=\"checkbox\" name=\"inactive\">\n      <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!treatmentsForm.valid\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div *ngFor=\"let treatment of treatments\">\n  <div class=\"treatment-outer\" *ngIf=\"treatment._id\">\n    <div class=\"treatment-header\">{{treatment.name}} -\n     <button (click)=\"showDialog = !showDialog; selectedTreatment = treatment\" class=\"btn\">Edit</button>\n    </div>\n  </div>\n</div>\n\n<div [(hidden)]=\"showDialog\">\n  <h1>Editing {{selectedTreatment.name}}</h1>\n  <form [formGroup]=\"treatmentsEditForm\" novalidate action=\"api/treatments\" method=\"POST\" (ngSubmit)=\"editData(treatmentsEditForm)\">\n    <label for=\"name\">Treatment</label>\n    <input formControlName=\"_id\" type=\"text\" name=\"_id\" [(ngModel)]=\"selectedTreatment._id\"><br>\n    <input formControlName=\"name\" type=\"text\" name=\"name\" [(ngModel)]=\"selectedTreatment.name\" placeholder=\"Treatment Name\"><br>\n    <label for=\"id\">ID</label>\n    <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\" [(ngModel)]=\"selectedTreatment.id\"><br>\n    <label for=\"price\">Price £</label>\n    <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\" [(ngModel)]=\"selectedTreatment.price\"><br>\n    <label for=\"gender\">Gender</label>\n    <select formControlName=\"gender\" name=\"gender\" [(ngModel)]=\"selectedTreatment.gender\">\n      <option value=\"female\">Female</option>\n      <option value=\"male\">Male</option>\n      <option value=\"both\">Both</option>\n    </select>\n    <br>\n    <label form=\"inactive\">Inactive</label>\n    <input formControlName=\"inactive\" type=\"checkbox\" name=\"inactive\" [(ngModel)]=\"selectedTreatment.inactive\">\n    <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!treatmentsEditForm.valid\">Submit</button>\n  </form>\n  <button (click)=\"showDialog = !showDialog\" class=\"btn\">Close</button>\n</div>\n\n<!--\n<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let treatment of treatments\">\n    <div class=\"card card-block\">\n      <form [formGroup]=\"treatmentsEditForm\" [id]=\"treatment.id\" novalidate action=\"api/treatments\" method=\"POST\" (ngSubmit)=\"editData($event)\">\n      <h4 class=\"card-title\">ID: {{ treatment.id }}</h4>\n      _ID: <input type=\"text\" readonly [value]=\"treatment._id\" name=\"_id\" formControlName=\"_id\"><br>\n      Treatment: <input type=\"text\" [value]=\"treatment.name\" formControlName=\"name\"><br>\n      Treatment ID: <input type=\"text\" [value]=\"treatment.id\" formControlName=\"id\"><br>\n      Price: £ <input type=\"text\" [value]=\"treatment.price\" formControlName=\"price\"><br>\n      Inactive: <input type=\"checkbox\" [value]=\"treatment.inactive\" formControlName=\"inactive\"><br>\n      Gender: <select formControlName=\"gender\" [value]=\"treatment.gender\">\n        <option value=\"female\">Female</option>\n        <option value=\"male\">Male</option>\n        <option value=\"both\">Both</option>\n      </select>\n        <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n      </form>\n    </div>\n  </div>\n</div>-->\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card card-block\">\n    <h4 class=\"card-title\">Add a new treatment</h4>\n    <form [formGroup]=\"treatmentsForm\" novalidate action=\"api/treatment\" (ngSubmit)=\"newData()\">\n      <label for=\"name\">Treatment</label>\n      <input formControlName=\"name\" type=\"text\" name=\"name\" placeholder=\"Treatment Name\" id=\"name\"><br>\n      <label for=\"id\">ID</label>\n      <input formControlName=\"id\" type=\"text\" name=\"id\" placeholder=\"ID\" id=\"id\"><br>\n      <label for=\"price\">Price £</label>\n      <input formControlName=\"price\" type=\"price\" name=\"price\" placeholder=\"£0.00\" id=\"price\"><br>\n      <label for=\"products\">Products used</label>\n      <input formControlName=\"products\" type=\"products\" name=\"products\" placeholder=\"e.g. leg wax...\" id=\"products\"><br>\n      <label for=\"description\">Products used</label>\n      <input formControlName=\"description\" type=\"description\" name=\"description\" placeholder=\"e.g. luxury leg wax with ...\" id=\"description\"><br>\n      <label for=\"duration\">Durations in minutes</label>\n      <input formControlName=\"duration\" type=\"duration\" name=\"duration\" placeholder=\"e.g. 20 minutes\" id=\"duration\"><br>\n      <label for=\"gender\">Gender</label>\n      <select formControlName=\"gender\" name=\"gender\" id=\"gender\">\n        <option value=\"female\">Female</option>\n        <option value=\"male\">Male</option>\n        <option value=\"both\">Both</option>\n      </select>\n      <br>\n      <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!treatmentsForm.valid\">Submit</button>\n    </form>\n  </div>\n</div>\n\n<div *ngFor=\"let treatment of treatments\">\n  <div class=\"treatment-outer\" *ngIf=\"treatment._id\">\n    <div class=\"treatment-header\">{{treatment.name}} -\n      <button (click)=\"showDialog = !showDialog; selectedTreatment = treatment\" class=\"btn\">Edit</button>\n    </div>\n  </div>\n</div>\n\n<h4 class=\"card-title\">Edit existing treatments</h4>\n\n<div [(hidden)]=\"showDialog\">\n\n  <div class=\"container\">\n    <div class=\"card card-block\">\n\n      <h1>Editing {{selectedTreatment.name}}</h1>\n      <form [formGroup]=\"treatmentsEditForm\" novalidate action=\"api/treatment\" (ngSubmit)=\"editData()\">\n        <label for=\"name\">Treatment</label>\n        <input formControlName=\"_id\" type=\"text\" name=\"_id\" [(ngModel)]=\"selectedTreatment._id\"><br>\n        <input formControlName=\"name\" type=\"text\" name=\"name\" [(ngModel)]=\"selectedTreatment.name\"\n               placeholder=\"Treatment Name\"><br>\n        <label for=\"id\">ID</label>\n        <input formControlName=\"id\" type=\"text\" name=\"id\" [(ngModel)]=\"selectedTreatment.id\"><br>\n        <label for=\"price\">Price £</label>\n        <input formControlName=\"price\" type=\"price\" name=\"price\" [(ngModel)]=\"selectedTreatment.price\"><br>\n        <label for=\"products\">Products used</label>\n        <input formControlName=\"products\" type=\"products\" name=\"products\" [(ngModel)]=\"selectedTreatment.products\"><br>\n        <label for=\"duration\">Duration in minutes</label>\n        <input formControlName=\"duration\" type=\"duration\" name=\"description\"\n               [(ngModel)]=\"selectedTreatment.duration\"><br>\n        <label for=\"description\">Description</label>\n        <input formControlName=\"description\" type=\"description\" name=\"description\" [(ngModel)]=\"selectedTreatment.description\"><br>\n        <label for=\"gender\">Gender</label>\n        <select formControlName=\"gender\" name=\"gender\" [(ngModel)]=\"selectedTreatment.gender\">\n          <option value=\"female\">Female</option>\n          <option value=\"male\">Male</option>\n          <option value=\"both\">Both</option>\n        </select>\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!treatmentsEditForm.valid\">Submit</button>\n      </form>\n      <button (click)=\"showDialog = !showDialog\" class=\"btn\">Close</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 679 */

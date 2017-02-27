@@ -2,14 +2,14 @@
   <h1>Treatments</h1>
 
     <div *ngFor="let treatment of treatments">
-      <div class="treatment-outer" *ngIf="!treatment.inactive">
+      <div class="treatment-outer">
         <div class="treatment-header">{{treatment.name}} using {{treatment.products}}</div>
         <div class="treatment-description">{{treatment.description}}</div>
         <br>
         <span *ngIf="treatment.gender == 'male' || treatment.gender == 'both'" class="badge badge-default badge-pill treatment-male-pill">Male</span>
         <span *ngIf="treatment.gender == 'both'">&nbsp;&&nbsp;</span>
         <span *ngIf="treatment.gender == 'female' || treatment.gender == 'both'" class="badge badge-default badge-pill treatment-female-pill">Female</span>
-
+        <br>
         <div class="treatment-footer">{{treatment.duration}} minutes for <span class="badge badge-default price-pill-color grad">{{treatment.price | currency:'GBP':true:'1.2-2'}}</span></div>
       </div>
     </div>

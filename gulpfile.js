@@ -1,16 +1,16 @@
-ar gulp = require('gulp');
-var shell = require('gulp-shell');
-var clean = require('gulp-clean');
-var htmlreplace = require('gulp-html-replace');
-var runSequence = require('run-sequence');
-var Builder = require('systemjs-builder');
-var builder = new Builder('', 'src/systemjs.config.js');
-var sass = require('gulp-sass');
+const gulp = require('gulp'),
+ shell = require('gulp-shell'),
+ clean = require('gulp-clean'),
+ htmlreplace = require('gulp-html-replace'),
+ runSequence = require('run-sequence'),
+ Builder = require('systemjs-builder'),
+ builder = new Builder('', 'src/systemjs.config.js'),
+ sass = require('gulp-sass');
 
 //var bundleHash = new Date().getTime();
-var bundleHash = 'app';
-var mainBundleName = bundleHash + '.main.bundle.js';
-var vendorBundleName = bundleHash + '.vendor.bundle.js';
+const bundleHash = 'app';
+const mainBundleName = bundleHash + '.main.bundle.js';
+const vendorBundleName = bundleHash + '.vendor.bundle.js';
 
 // This is main task for production use
 gulp.task('dist', function(done) {

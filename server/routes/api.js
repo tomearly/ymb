@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
@@ -9,7 +9,7 @@ db.on('error', console.error.bind(console, 'connection: error:'));
 // declare axios for making http requests
 const axios = require('axios');
 
-/* GET api listing. */
+//GET api listing.
 router.get('/', (req, res) => {
   res.send('OK');
 });
@@ -26,3 +26,4 @@ AboutMe.methods(['get','put','post']);
 AboutMe.register(router, '/aboutme');
 
 module.exports = router;
+*/

@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__(657)();
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\n.dropdown {\n  z-index: 100000 !importqnt;\n}\n\n.home-navbar-top {\n  background: #c1c1c1 !important;\n}\n.main-logo {\n  width: 200px;\n  float: left;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n\n.center-div {\n  position:absolute;\n  top:0; bottom:0;\n  left:0; right:0;\n  margin:auto;\n}\n\n.navbar-collapse {\n  color: #59b9b5;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\nnav#menubar {\n  background: #c1c1c1;\n}\n", ""]);
 
 // exports
 

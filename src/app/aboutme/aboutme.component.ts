@@ -17,11 +17,11 @@ export class AboutmeComponent implements OnInit {
 
     constructor(private aboutmeService: AboutmeService, public fb: FormBuilder) { }
 
-    newData(event) {
+    newData() {
       this.aboutmeService.newData(this.aboutmeForm.value);
     }
 
-    editData(event) {
+    editData() {
       this.aboutmeService.editData(this.aboutmeForm.value);
     }
 
