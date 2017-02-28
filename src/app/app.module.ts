@@ -17,8 +17,6 @@ import { PriceListComponent } from './pricelist/pricelist.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { FileUploadModule } from "ng2-file-upload";
 import { FilterDataPipe } from './filterdata.pipe';
-import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular';
-import cloudinaryConfiguration from './config';
 
 // We need to import the ReactiveFormsModule and import it
 
@@ -81,14 +79,13 @@ const ROUTES = [
   ],
   imports: [
     FileUploadModule,
-    CloudinaryModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [TreatmentsService, AboutmeService, provideCloudinary(require('cloudinary-core'), cloudinaryConfiguration as CloudinaryConfiguration)], // Add the posts service
+  providers: [TreatmentsService, AboutmeService], // Add the posts service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

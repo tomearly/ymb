@@ -1,22 +1,22 @@
-webpackJsonp([1,2],{
+webpackJsonp([1,3],{
 
-/***/ 385:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 391:
+/***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(656);
+var content = __webpack_require__(668);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(696)(content, {});
+var update = __webpack_require__(706)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./styles.css", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js?sourcemap!./../node_modules/postcss-loader/index.js!./styles.css");
+		module.hot.accept("!!../node_modules/css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../node_modules/postcss-loader/index.js!./styles.css", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../node_modules/postcss-loader/index.js!./styles.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -25,25 +25,10 @@ if(false) {
 	module.hot.dispose(function() { update(); });
 }
 
-/***/ },
+/***/ }),
 
-/***/ 656:
-/***/ function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(657)();
-// imports
-
-
-// module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\nnav#menubar {\n  background: #c1c1c1;\n}\n", ""]);
-
-// exports
-
-
-/***/ },
-
-/***/ 657:
-/***/ function(module, exports) {
+/***/ 40:
+/***/ (function(module, exports) {
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
@@ -97,10 +82,25 @@ module.exports = function() {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ 696:
-/***/ function(module, exports) {
+/***/ 668:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(40)();
+// imports
+
+
+// module
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: #fff !important;\n}\n\n@media (max-width: 600px) {\n  body {\n    margin-top: 100px;\n  }\n}\n\n@media (min-width: 601px) {\n  body {\n    margin-top: 165px;\n  }\n}\n\nnav#menubar {\n  background: #c1c1c1;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 706:
+/***/ (function(module, exports) {
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
@@ -115,7 +115,7 @@ var stylesInDom = {},
 		};
 	},
 	isOldIE = memoize(function() {
-		return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
 	}),
 	getHeadElement = memoize(function () {
 		return document.head || document.getElementsByTagName("head")[0];
@@ -350,15 +350,15 @@ function updateLink(linkElement, obj) {
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ 700:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 709:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(385);
+module.exports = __webpack_require__(391);
 
 
-/***/ }
+/***/ })
 
-},[700]);
-//# sourceMappingURL=styles.bundle.map
+},[709]);
+//# sourceMappingURL=styles.bundle.js.map
