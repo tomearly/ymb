@@ -18,3 +18,10 @@ body {
 nav#menubar {
   background: #c1c1c1;
 }
+
+.required-field {
+  margin-left: 20px;
+  color: red;
+  font-size: 14px;
+  vertical-align: top;
+}

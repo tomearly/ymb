@@ -34,6 +34,14 @@ const Resource = app.resource = restful.model('treatment', ({
   .methods(['get', 'put', 'post', 'delete']);
 
 Resource.register(app, '/api/treatment');
+
+const AboutMe = app.resource = restful.model('aboutme', ({
+  description: String
+}))
+  .methods(['get', 'put', 'post', 'delete']);
+
+AboutMe.register(app, '/api/aboutme');
+
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));

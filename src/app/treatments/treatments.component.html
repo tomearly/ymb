@@ -26,6 +26,9 @@
   </div>
 </div>
 
+
+<h4 class="card-title">Edit existing treatments</h4>
+
 <div *ngFor="let treatment of treatments">
   <div class="treatment-outer" *ngIf="treatment._id">
     <div class="treatment-header">{{treatment.name}} -
@@ -34,36 +37,32 @@
   </div>
 </div>
 
-<h4 class="card-title">Edit existing treatments</h4>
-
 <div [(hidden)]="showDialog">
-
   <div class="container">
     <div class="card card-block">
-
       <h1>Editing {{selectedTreatment.name}}</h1>
       <form [formGroup]="treatmentsEditForm" novalidate action="api/treatment" (ngSubmit)="editData()">
         <label for="name">Treatment</label>
-        <input formControlName="_id" type="text" name="_id" [(ngModel)]="selectedTreatment._id"><br>
+        <input formControlName="_id" type="text" name="_id" readonly [(ngModel)]="selectedTreatment._id"><br>
         <input formControlName="name" type="text" name="name" [(ngModel)]="selectedTreatment.name"
-               placeholder="Treatment Name"><br>
+               placeholder="Treatment Name"><span class="required-field" *ngIf="!treatmentsEditForm.controls.name.valid">Required</span><br>
         <label for="id">ID</label>
-        <input formControlName="id" type="text" name="id" [(ngModel)]="selectedTreatment.id"><br>
+        <input formControlName="id" type="text" name="id" [(ngModel)]="selectedTreatment.id"><span class="required-field" *ngIf="!treatmentsEditForm.controls.id.valid">Required</span><br>
         <label for="price">Price £</label>
-        <input formControlName="price" type="price" name="price" [(ngModel)]="selectedTreatment.price"><br>
+        <input formControlName="price" type="price" name="price" [(ngModel)]="selectedTreatment.price"><span class="required-field" *ngIf="!treatmentsEditForm.controls.price.valid">Required</span><br>
         <label for="products">Products used</label>
-        <input formControlName="products" type="products" name="products" [(ngModel)]="selectedTreatment.products"><br>
+        <input formControlName="products" type="products" name="products" [(ngModel)]="selectedTreatment.products"><span class="required-field" *ngIf="!treatmentsEditForm.controls.products.valid">Required</span><br>
         <label for="duration">Duration in minutes</label>
-        <input formControlName="duration" type="duration" name="description"
-               [(ngModel)]="selectedTreatment.duration"><br>
+        <input formControlName="duration" type="duration" name="duration"
+               [(ngModel)]="selectedTreatment.duration"><span class="required-field" *ngIf="!treatmentsEditForm.controls.duration.valid">Required</span><br>
         <label for="description">Description</label>
-        <input formControlName="description" type="description" name="description" [(ngModel)]="selectedTreatment.description"><br>
+        <input formControlName="description" type="description" name="description" [(ngModel)]="selectedTreatment.description"><span class="required-field" *ngIf="!treatmentsEditForm.controls.description.valid">Required</span><br>
         <label for="gender">Gender</label>
         <select formControlName="gender" name="gender" [(ngModel)]="selectedTreatment.gender">
           <option value="female">Female</option>
           <option value="male">Male</option>
           <option value="both">Both</option>
-        </select>
+        </select><span class="required-field" *ngIf="!treatmentsEditForm.controls.gender.valid">Required</span><br>
         <button type="submit" class="btn btn-default" [disabled]="!treatmentsEditForm.valid">Submit</button>
       </form>
       <button (click)="showDialog = !showDialog" class="btn">Close</button>
