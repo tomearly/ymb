@@ -25,7 +25,7 @@ var smtpServer  = email.server.connect({
   user:    config.yourEmail,
   password: config.yourPwd,
   host:    config.yourSmtp,
-  ssl:     true
+ // ssl:     true
 });
 
 // Your MongoDB TokenStore
@@ -92,13 +92,18 @@ var users = [
 /* POST login details. */
 app.post('/sendtoken',
   passwordless.requestToken(
-    function(user, delivery, callback) {
+    function(user, delivery, callback,req) {
       for (var i = users.length - 1; i >= 0; i--) {
         if(users[i].email === user.toLowerCase()) {
           return callback(null, users[i].id);
         }
       }
-      callback(null, null);
+    //  User.find({email: user}, callback(ret) {
+    //    if(ret)
+    //      callback(null, ret.id)
+    //    else
+    //      callback(null, null)
+    //  })
     }),
   function(req, res) {
     // success!
