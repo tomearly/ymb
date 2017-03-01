@@ -34,9 +34,13 @@
     "@angular/platform-browser-dynamic": "2.4.0",
     "@angular/router": "3.2.1",
     "core-js": "^2.4.1",
+    "emailjs": "^1.0.8",
     "mongoose": "^4.8.4",
     "ng2-file-upload": "^1.2.0",
     "node-restful": "^0.2.5",
+    "passwordless": "^1.1.2",
+    "passwordless-mongostore": "^0.1.4",
+    "pug": "^2.0.0-beta11",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.23"
   },

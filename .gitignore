@@ -3,6 +3,8 @@
 # compiled output
 /dist
 /tmp
+/config/*
+/server/config.js
 
 # dependencies
 /node_modules

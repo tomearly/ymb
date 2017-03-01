@@ -40,7 +40,7 @@
 <div [(hidden)]="showDialog">
   <div class="container">
     <div class="card card-block">
-      <h1>Editing {{selectedTreatment.name}}</h1>
+      <h4>Editing {{selectedTreatment.name}}</h4>
       <form [formGroup]="treatmentsEditForm" novalidate action="api/treatment" (ngSubmit)="editData()">
         <label for="name">Treatment</label>
         <input formControlName="_id" type="text" name="_id" readonly [(ngModel)]="selectedTreatment._id"><br>
@@ -64,7 +64,7 @@
           <option value="both">Both</option>
         </select><span class="required-field" *ngIf="!treatmentsEditForm.controls.gender.valid">Required</span><br>
         <button type="submit" class="btn btn-default" [disabled]="!treatmentsEditForm.valid">Submit</button>
-      </form>
+      </form><br>
       <button (click)="showDialog = !showDialog" class="btn">Close</button>
     </div>
   </div>

@@ -30,13 +30,13 @@ module.exports = restful.model('AboutMe', aboutmeSchema);
 
  mongoose.connect("mongodb://localhost/resources");
 
- var Resource = app.resource = restful.model('resource', mongoose.Schema({
+ var Treatment = app.resource = restful.model('resource', mongoose.Schema({
  title: String,
  year: Number,
  }))
  .methods(['get', 'post', 'put', 'delete']);
 
- Resource.register(app, '/resources');
+ Treatment.register(app, '/resources');
 
  app.listen(3000);
  */
