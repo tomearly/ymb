@@ -1,6 +1,12 @@
 <div class="col-md-6 offset-md-3">
   <h1>Treatments</h1>
 
+  <div>
+    <div>Filter by:</div>
+    <div>Price:    </div>
+    <div>Gender:   </div>
+  </div>
+
     <div *ngFor="let treatment of treatments">
       <div class="treatment-outer">
         <div class="treatment-header">{{treatment.name}} using {{treatment.products}}</div>

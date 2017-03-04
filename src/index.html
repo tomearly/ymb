@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
   <nav id="menubar" class="navbar navbar-toggleable-md navbar-light home-navbar-top fixed-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,9 +33,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+     <!-- <li class="nav-item">
         <a class="nav-link" href="/treatments">treatments</a>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" href="/pricelist">pricelist</a>
       </li>
@@ -37,15 +45,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/showcase">showcase</a>
       </li>
-      <li class="nav-item">
+     <!-- <li class="nav-item">
         <div class="dropdown">
               <ul>
                 <li><a href="/admin/treatments">treatments</a></li>
                 <li><a href="/admin/aboutme">about me</a></li>
-                <li><a href="/admin/photo-upload">upload images</a></li>
               </ul>
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </nav>

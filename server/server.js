@@ -25,7 +25,7 @@ var smtpServer  = email.server.connect({
   user:    config.yourEmail,
   password: config.yourPwd,
   host:    config.yourSmtp,
- // ssl:     true
+  ssl:     true
 });
 
 // Your MongoDB TokenStore
@@ -98,12 +98,6 @@ app.post('/sendtoken',
           return callback(null, users[i].id);
         }
       }
-    //  User.find({email: user}, callback(ret) {
-    //    if(ret)
-    //      callback(null, ret.id)
-    //    else
-    //      callback(null, null)
-    //  })
     }),
   function(req, res) {
     // success!
@@ -133,7 +127,7 @@ const AboutMe = app.resource = restful.model('aboutme', ({
 AboutMe.register(app, '/api/aboutme');
 
 //Lock down?
-app.get('/admin/*', passwordless.restricted(),
+app.get('/admin/*', passwordless.restricted({ failureRedirect: '/login' }),
   function(req, res, next) {
     next();
   }

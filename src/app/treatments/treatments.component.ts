@@ -18,23 +18,23 @@ export class TreatmentsComponent implements OnInit {
 
   public treatmentsForm = this.fb.group({
       name: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [''],
       id: ['', Validators.required],
       gender: ['', Validators.required],
       products: [''],
-      description: ['', Validators.required],
-      duration: ['', Validators.required]
+      description: [''],
+      duration: ['']
     });
 
   public treatmentsEditForm = this.fb.group({
     _id: ['', Validators.required],
     name: ['', Validators.required],
-    price: ['', Validators.required],
+    price: [''],
     id: ['', Validators.required],
     gender: ['', Validators.required],
     products: [''],
-    description: ['', Validators.required],
-    duration: ['', Validators.required]
+    description: [''],
+    duration: ['']
   });
 
   constructor(private treatmentsService: TreatmentsService, public fb: FormBuilder) { }
