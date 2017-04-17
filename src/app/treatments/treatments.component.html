@@ -26,17 +26,6 @@
   </div>
 </div>
 
-
-<h4 class="card-title">Edit existing treatments</h4>
-
-<div *ngFor="let treatment of treatments">
-  <div class="treatment-outer" *ngIf="treatment._id">
-    <div class="treatment-header">{{treatment.name}} -
-      <button (click)="showDialog = !showDialog; selectedTreatment = treatment" class="btn">Edit</button>
-    </div>
-  </div>
-</div>
-
 <div [(hidden)]="showDialog">
   <div class="container">
     <div class="card card-block">
@@ -69,3 +58,14 @@
     </div>
   </div>
 </div>
+
+<h4 class="card-title">Edit existing treatments</h4>
+
+<div *ngFor="let treatment of treatments">
+  <div class="treatment-outer" *ngIf="treatment._id">
+    <div class="treatment-header">{{treatment.name}} -
+      <button (click)="showDialog = !showDialog; selectedTreatment = treatment" class="btn">Edit</button>
+    </div>
+  </div>
+</div>
+

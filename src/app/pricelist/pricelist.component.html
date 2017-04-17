@@ -7,7 +7,7 @@
                           <span *ngIf="price.gender == 'both'">&nbsp;<img src="assets/images/ampersand.png">&nbsp;</span>
                           <span *ngIf="price.gender == 'female' || price.gender == 'both'" class="badge badge-default badge-pill treatment-female-pill">Female</span>-->
 
-        <span class="badge badge-default badge-pill price-pill-color">{{price.price | currency:'GBP':true:'1.2-2'}}</span>
+        <span *ngIf="price.price" class="badge badge-default badge-pill price-pill-color">{{price.price | currency:'GBP':true:'1.2-2'}}</span>
       </li>
     </ul>
 </div>

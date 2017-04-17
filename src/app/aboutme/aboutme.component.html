@@ -8,11 +8,28 @@
     </form>
   </div>
 </div>
-<div class="container">
-  <div class="row" *ngFor="let aboutme of aboutmelist">
+
+<div [(hidden)]="showDialog">
+  <div class="container">
     <div class="card card-block">
-      About me: <input type="text" [(ngModel)]="aboutme.description">
-      <a href="#" (click)="editData()" class="card-link">Save</a>
+      <h4>Editing {{selectedAboutMe.description}}</h4>
+      <form [formGroup]="aboutmeEditForm" novalidate action="api/aboutme" (ngSubmit)="editData()">
+        <label for="_id">ID</label>
+        <input formControlName="_id" type="text" name="_id" readonly [(ngModel)]="selectedAboutMe._id"><br>
+        <label for="description">Description</label>
+        <input formControlName="description" type="text" name="description" [(ngModel)]="selectedAboutMe.description" placeholder="Description"><!--<span class="required-field" *ngIf="!aboutmeEditForm.controls.description.valid">Required</span>--><br>
+        <button type="submit" class="btn btn-default" [disabled]="!aboutmeEditForm.valid">Submit</button>
+      </form><br>
+      <button (click)="showDialog = !showDialog" class="btn">Close</button>
     </div>
   </div>
 </div>
+
+<div *ngFor="let aboutme of aboutmelist">
+  <div class="aboutme-container" *ngIf="aboutme._id">
+    <div class="aboutme-header">{{aboutme.description}} -
+      <button (click)="showDialog = !showDialog; selectedAboutMe = aboutme" class="btn">Edit</button>
+    </div>
+  </div>
+</div>
+

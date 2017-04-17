@@ -86,7 +86,7 @@ app.get('/logged_in', passwordless.acceptToken(),
   });
 
 var users = [
-  { id: 1, email: 'tom.early@gmail.com' }
+  { id: 1, email: 'tom.early@gmail.com'  }
 ];
 
 /* POST login details. */
@@ -127,11 +127,11 @@ const AboutMe = app.resource = restful.model('aboutme', ({
 AboutMe.register(app, '/api/aboutme');
 
 //Lock down?
-app.get('/admin/*', passwordless.restricted({ failureRedirect: '/login' }),
-  function(req, res, next) {
-    next();
-  }
-);
+//app.get('/admin/*', passwordless.restricted({ failureRedirect: '/login' }),
+ // function(req, res, next) {
+ //   next();
+ // }
+//);
 //end of lock down
 
 app.get('/logout', passwordless.logout(),

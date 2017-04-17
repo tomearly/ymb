@@ -16,6 +16,7 @@ export class AboutmeService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = inputData;
+    console.log(`This is the ID - ${body._id}`);
     let _id = body._id;
 
     //REMOVE _id FROM BODY

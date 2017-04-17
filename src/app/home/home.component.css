@@ -25,38 +25,14 @@ body {
 }
 
 .banner1 {
-  background:	url("https://res.cloudinary.com/ymb/image/upload/v1488653273/cosmetics-166774_640_duxzde.jpg") 50% 50% no-repeat;
+  background:	url("http://res.cloudinary.com/ymb/image/upload/v1492425831/Capture0030-Facebook-size_qe6pcu.jpg") 50% 50% no-repeat;
   background-size: cover;
-  height: calc(33.33333%);
+  height: calc(100%);
   filter: gray;
   filter: grayscale(75%);
   background-blend-mode: screen;
-  background-color: darkturquoise;
+ /** background-color: darkturquoise;**/
   padding: 20px;
-}
-
-.banner2 {
-  background: url("https://res.cloudinary.com/ymb/image/upload/v1488653273/kajal-1963364_640_tjtgev.jpg") 50% 50% no-repeat;
-  background-size: cover;
-  height: calc(33.33333%);
-  filter: gray;
-  filter: grayscale(75%);
-  background-blend-mode: screen;
-  background-color: darkturquoise;
-  text-align: right;
-  padding: 20px;
-}
-
-.banner3 {
-  background: url("https://res.cloudinary.com/ymb/image/upload/v1488653274/lipstick-1137537_640_p1e3ym.jpg") 50% 50% no-repeat;
-  background-size: cover;
-  height: calc(33.33333%);
-  filter: gray;
-  filter: grayscale(75%);
-  background-blend-mode: screen;
-  background-color: darkturquoise;
-  text-align: center;
- /* padding: 20px;*/
 }
 
 h1 {

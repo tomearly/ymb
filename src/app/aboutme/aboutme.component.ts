@@ -11,7 +11,17 @@ export class AboutmeComponent implements OnInit {
 
     aboutmelist: any = [];
 
+    private showDialog = true;
+    private selectedAboutMe = {
+      _id: null
+    };
+
     public aboutmeForm = this.fb.group({
+      description: ['', Validators.required]
+    });
+
+    public aboutmeEditForm = this.fb.group({
+      _id: ['', Validators.required],
       description: ['', Validators.required]
     });
 
@@ -22,7 +32,7 @@ export class AboutmeComponent implements OnInit {
     }
 
     editData() {
-      this.aboutmeService.editData(this.aboutmeForm.value);
+      this.aboutmeService.editData(this.aboutmeEditForm.value);
     }
 
     ngOnInit() {
