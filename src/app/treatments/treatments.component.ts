@@ -39,6 +39,10 @@ export class TreatmentsComponent implements OnInit {
 
   constructor(private treatmentsService: TreatmentsService, public fb: FormBuilder) { }
 
+  deleteData(_id) {
+    this.treatmentsService.deleteData(_id);
+  }
+
   newData() {
     this.treatmentsService.newData(this.treatmentsForm.value);
   }

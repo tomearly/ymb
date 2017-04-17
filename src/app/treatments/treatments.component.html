@@ -53,6 +53,7 @@
           <option value="both">Both</option>
         </select><span class="required-field" *ngIf="!treatmentsEditForm.controls.gender.valid">Required</span><br>
         <button type="submit" class="btn btn-default" [disabled]="!treatmentsEditForm.valid">Submit</button>
+        <button type="button" (click)="deleteData(selectedTreatment._id)" class="btn btn-default">Delete</button>
       </form><br>
       <button (click)="showDialog = !showDialog" class="btn">Close</button>
     </div>

@@ -27,6 +27,11 @@ export class AboutmeComponent implements OnInit {
 
     constructor(private aboutmeService: AboutmeService, public fb: FormBuilder) { }
 
+    deleteData(_id) {
+      console.log(_id);
+      this.aboutmeService.deleteData(_id);
+    }
+
     newData() {
       this.aboutmeService.newData(this.aboutmeForm.value);
     }

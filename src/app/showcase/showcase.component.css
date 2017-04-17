@@ -64,11 +64,11 @@ figcaption {
 
 img {
   border: none;
-  max-width: 100%;
-  height: auto;
+  width: auto;
+  height: 214px;
   display: block;
   background: #ccc;
-  transition: transform .2s ease-in-out;
+  transition: transform .5s ease-in-out;
 }
 
 .p a {

@@ -12,6 +12,21 @@ export class AboutmeService {
       .map(res => res.json());
   }
 
+  deleteData(_id) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http
+      .delete(`/api/aboutme/${_id}`,
+        {
+          headers
+        })
+      .subscribe(data => {
+        alert('About me section deleted');
+      }, error => {
+        console.log(JSON.stringify(error.json()));
+      });
+  }
+
   editData(inputData) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

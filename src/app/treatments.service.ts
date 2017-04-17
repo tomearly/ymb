@@ -13,6 +13,21 @@ export class TreatmentsService {
       .map(res => res.json());
   }
 
+  deleteData(_id) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http
+      .delete(`/api/treatments/${_id}`,
+        {
+          headers
+        })
+      .subscribe(data => {
+        alert('Treatment deleted');
+      }, error => {
+        console.log(JSON.stringify(error.json()));
+      });
+  }
+
   editData(inputData) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

@@ -86,7 +86,8 @@ app.get('/logged_in', passwordless.acceptToken(),
   });
 
 var users = [
-  { id: 1, email: 'tom.early@gmail.com'  }
+  { id: 1, email: 'tom.early@gmail.com',
+    id: 2, email: 'victoriamccoy@yahoo.co.uk'}
 ];
 
 /* POST login details. */
