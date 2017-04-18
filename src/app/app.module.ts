@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -8,67 +8,23 @@ import { TreatmentsComponent } from './treatments/treatments.component';
 import { HomeComponent } from './home/home.component';
 import { TreatmentsService } from './treatments.service';
 import { AboutmeService } from './aboutme.service';
-import { TreatmentlistComponent } from './treatmentlist/treatmentlist.component';
+import { TreatmentListComponent } from './treatmentlist/treatmentlist.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { AboutmeListComponent } from './aboutmelist/aboutmelist.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { PriceListComponent } from './pricelist/pricelist.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
-import { FileUploadModule } from "ng2-file-upload";
 import { FilterDataPipe } from './filterdata.pipe';
 
 // We need to import the ReactiveFormsModule and import it
 
-// Define the routes
-const ROUTES = [
-  {
-    path: '',
-    component: HomeComponent,
-    useAsDefault: true
-  },
-  {
-    path: 'admin/treatments',
-    component: TreatmentsComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'treatments',
-    component: TreatmentlistComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'admin/aboutme',
-    component: AboutmeComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'showcase',
-    component: ShowcaseComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'aboutme',
-    component: AboutmeListComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'pricelist',
-    component: PriceListComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'admin/photo-upload',
-    component: PhotoUploadComponent,
-    pathMatch: 'full'
-  }
-];
 
 @NgModule({
   declarations: [
     AppComponent,
     TreatmentsComponent,
     HomeComponent,
-    TreatmentlistComponent,
+    TreatmentListComponent,
     AboutmeComponent,
     AboutmeListComponent,
     ShowcaseComponent,
@@ -77,12 +33,11 @@ const ROUTES = [
     FilterDataPipe
   ],
   imports: [
-    FileUploadModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES) // Add routes to the app
+    AppRoutingModule
   ],
   providers: [TreatmentsService, AboutmeService], // Add the posts service
   bootstrap: [AppComponent]

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TreatmentsService } from '../treatments.service';
-import { FilterDataPipe } from '../filterdata.pipe';
+//import { FilterDataPipe } from '../filterdata.pipe';
 
 @Component({
   selector: 'app-treatmentlist',
   templateUrl: './treatmentlist.component.html',
   styleUrls: ['./treatmentlist.component.css']
 })
-export class TreatmentlistComponent implements OnInit {
+export class TreatmentListComponent implements OnInit {
 
   treatments: any = [];
 
