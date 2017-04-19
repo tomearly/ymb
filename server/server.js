@@ -21,7 +21,7 @@ var sess = {
   cookie: {}
 }
 
-var smtpServer  = email.server.connect({
+var smtpServer  = email.server.connect({replac
   user:    config.yourEmail,
   password: config.yourPwd,
   host:    config.yourSmtp,
@@ -128,11 +128,11 @@ const AboutMe = app.resource = restful.model('aboutme', ({
 AboutMe.register(app, '/api/aboutme');
 
 //Lock down?
-//app.get('/admin/*', passwordless.restricted({ failureRedirect: '/login' }),
- // function(req, res, next) {
- //   next();
- // }
-//);
+app.get('/admin/*', passwordless.restricted({ failureRedirect: '/login' }),
+  function(req, res, next) {
+    next();
+  }
+);
 //end of lock down
 
 app.get('/logout', passwordless.logout(),
