@@ -21,7 +21,7 @@ var sess = {
   cookie: {}
 }
 
-var smtpServer  = email.server.connect({replac
+var smtpServer  = email.server.connect({
   user:    config.yourEmail,
   password: config.yourPwd,
   host:    config.yourSmtp,
