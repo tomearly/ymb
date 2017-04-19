@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "deploy" : "ng build && cp -r dist/* server/dist/",
+    "deploy" : "ng build &&  cp -r dist/* server/dist/",
     "start": "concurrently \"npm run build-css\" \"npm run build:watch\" \"npm run serve\"",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
