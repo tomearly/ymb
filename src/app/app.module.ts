@@ -15,6 +15,7 @@ import { ShowcaseComponent } from './showcase/showcase.component';
 import { PriceListComponent } from './pricelist/pricelist.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { FilterDataPipe } from './filterdata.pipe';
+import { TopnavComponent } from './topnav/topnav.component';
 
 // We need to import the ReactiveFormsModule and import it
 
@@ -30,7 +31,8 @@ import { FilterDataPipe } from './filterdata.pipe';
     ShowcaseComponent,
     PriceListComponent,
     PhotoUploadComponent,
-    FilterDataPipe
+    FilterDataPipe,
+    TopnavComponent
   ],
   imports: [
     BrowserModule,
